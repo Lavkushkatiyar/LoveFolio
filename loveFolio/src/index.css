@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-/* Soft Neumorphism & Clean Minimalist CSS System */
 :root {
   --bg-color: #f4f6fb;
   --surface-color: #ffffff;
@@ -10,19 +9,21 @@
   --accent-blue: #009bff;
   --accent-amber: #ffba00;
 
-  /* Neumorphic Shadows */
-  --shadow-flat: 6px 6px 16px #e1e6f0, -6px -6px 16px #ffffff;
-  --shadow-hover: 10px 10px 22px #d4dceb, -10px -10px 22px #ffffff;
-  --shadow-inset: inset 4px 4px 8px #e1e6f0, inset -4px -4px 8px #ffffff;
-  --shadow-pill: 3px 3px 8px #e1e6f0, -3px -3px 8px #ffffff;
+  --shadow-flat: 0 4px 16px rgba(0, 0, 0, 0.04);
+  --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.07);
+  --shadow-inset: inset 3px 3px 6px rgba(0, 0, 0, 0.04), inset -3px -3px 6px #ffffff;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Rubik', 'Nunito', 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Inter', 'Rubik', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   scroll-behavior: smooth;
+}
+
+html {
+  font-size: 14px; /* Reduced baseline font size */
 }
 
 body {
@@ -30,72 +31,85 @@ body {
   color: var(--text-main);
   min-height: 100vh;
   overflow-x: hidden;
-  line-height: 1.6;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Centered Responsive Main Container */
+.portfolio-container {
+  width: 100%;
+  max-width: 1050px;
+  margin-inline: auto;
+  padding-inline: 16px;
+}
+
+@media (min-width: 640px) {
+  .portfolio-container {
+    padding-inline: 24px;
+  }
 }
 
 /* Custom Clean Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
   background: var(--bg-color);
 }
 ::-webkit-scrollbar-thumb {
   background: #cbd5e0;
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
-/* Neumorphic Cards & Components */
+/* Cards & Components */
 .neu-card {
   background: #ffffff;
-  box-shadow: var(--shadow-flat);
-  border-radius: 20px;
-  border: 1px solid rgba(230, 235, 245, 0.8);
-  transition: all 0.3s ease;
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.04);
+  border-radius: 18px;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  transition: all 0.2s ease-in-out;
 }
 
 .neu-card:hover {
-  box-shadow: var(--shadow-hover);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
 }
 
 .neu-inset {
   background: #f8fafc;
   box-shadow: var(--shadow-inset);
-  border-radius: 16px;
+  border-radius: 14px;
 }
 
 .neu-btn {
   border-radius: 50px;
   font-weight: 700;
-  font-size: 0.875rem;
-  padding: 10px 24px;
+  font-size: 0.8rem;
+  padding: 8px 20px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  transition: all 0.25s ease;
+  gap: 6px;
+  transition: all 0.2s ease;
   cursor: pointer;
   text-decoration: none;
 }
 
 .neu-btn-primary {
-  background: var(--accent-blue);
+  background: #009bff;
   color: #ffffff;
-  box-shadow: 0 4px 14px rgba(0, 155, 255, 0.35);
+  box-shadow: 0 3px 10px rgba(0, 155, 255, 0.3);
   border: none;
 }
 
 .neu-btn-primary:hover {
   background: #0088ff;
-  box-shadow: 0 6px 18px rgba(0, 155, 255, 0.45);
+  box-shadow: 0 5px 14px rgba(0, 155, 255, 0.4);
   transform: translateY(-1px);
 }
 
 .neu-btn-secondary {
   background: var(--bg-color);
   color: var(--text-main);
-  box-shadow: var(--shadow-flat);
   border: 1.5px solid #009bff;
 }
 
@@ -109,20 +123,20 @@ body {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(15, 23, 42, 0.4);
+  background: rgba(15, 23, 42, 0.45);
   backdrop-filter: blur(6px);
   z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 16px;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
+  from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.35s ease forwards;
+  animation: fadeIn 0.25s ease forwards;
 }

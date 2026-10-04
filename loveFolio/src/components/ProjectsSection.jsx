@@ -1,88 +1,113 @@
 import React from 'react';
 import { PROJECTS_DATA } from '../data/portfolioData';
+import { ChevronDown } from 'lucide-react';
 
 export default function ProjectsSection({ onSelectProject }) {
   return (
-    <section id="projects" className="py-12 px-6 max-w-[1050px] mx-auto">
-      
-      {/* Section Title with Line */}
-      <div className="flex items-center gap-4 mb-10">
-        <h2 className="text-2xl md:text-3xl font-extrabold text-[#009BFF] whitespace-nowrap font-manrope">
-          My Projects
-        </h2>
-        <div className="h-[2px] bg-[#009BFF] flex-1 hidden md:block" />
-      </div>
+    <section id="projects" className="py-8 sm:py-10">
+      <div className="portfolio-container">
+        
+        {/* Section Title with Horizontal Extension Line */}
+        <div className="flex items-center gap-3 mb-6 sm:mb-8">
+          <h2 className="text-xl sm:text-2xl font-black text-[#009BFF] whitespace-nowrap font-manrope">
+            My Projects
+          </h2>
+          <div className="h-[2px] bg-[#009BFF] flex-1 hidden sm:block" />
+        </div>
 
-      {/* Projects List */}
-      <div className="space-y-8">
-        {PROJECTS_DATA.map((project, idx) => (
-          <div
-            key={project.id}
-            className="neu-card p-6 sm:p-8 flex flex-col md:flex-row gap-6 items-center justify-between"
-          >
-            {/* Left Info Column */}
-            <div className={`w-full md:w-7/12 space-y-3 text-center md:text-left ${idx % 2 === 1 ? 'md:order-2' : ''}`}>
-              
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#303030] font-manrope">
-                {project.title}
-              </h3>
+        {/* Projects Cards List */}
+        <div className="space-y-6 sm:space-y-8">
+          {PROJECTS_DATA.map((project) => (
+            <div
+              key={project.id}
+              className="bg-[#eef2f7] rounded-[18px] sm:rounded-[22px] p-4 sm:p-6 md:p-8 shadow-xs border border-slate-200/70 flex flex-col-reverse md:flex-row items-center justify-between gap-6"
+            >
+              {/* Left Content Column */}
+              <div className="w-full md:w-7/12 text-left space-y-2">
+                
+                {/* Project Title */}
+                <h3 className="text-xl sm:text-2xl font-black text-[#0f3276] font-manrope tracking-tight">
+                  {project.title}
+                </h3>
 
-              <p className="text-slate-500 text-sm font-normal">
-                {project.date}
-              </p>
+                {/* Date */}
+                <p className="text-slate-500 text-xs font-medium">
+                  {project.date}
+                </p>
 
-              <p className="text-slate-600 text-sm leading-relaxed">
-                {project.description}
-              </p>
+                {/* Description & Bullet points */}
+                <div className="text-slate-700 text-xs leading-relaxed space-y-1 pt-0.5">
+                  <p className="font-normal">{project.summary}</p>
+                  {project.bulletIntro && (
+                    <p className="font-normal">{project.bulletIntro}</p>
+                  )}
+                  {project.bullets && (
+                    <ul className="list-disc pl-4 space-y-0.5 font-normal text-slate-700">
+                      {project.bullets.map((b, i) => (
+                        <li key={i}>{b}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
 
-              {/* Tech Stack Pills */}
-              <div className="flex flex-wrap justify-center md:justify-start gap-2 pt-1">
-                {project.techStack.map((tech) => (
-                  <span
-                    key={tech}
-                    className="bg-[#f0f4f8] text-slate-700 font-semibold px-3 py-1 text-xs rounded-md shadow-2xs"
+                {/* Tech Stack Badges */}
+                <div className="flex flex-wrap items-center gap-1.5 pt-2">
+                  {project.techStack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="bg-white text-slate-700 font-medium text-[10px] sm:text-xs px-2.5 py-1 rounded-md border border-slate-200/60"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+
+                  {/* +more button pill */}
+                  <button
+                    onClick={() => onSelectProject && onSelectProject(project)}
+                    className="text-slate-700 font-bold text-[10px] sm:text-xs flex items-center gap-0.5 px-1.5 py-1 hover:text-[#009BFF] transition-colors"
                   >
-                    {tech}
-                  </span>
-                ))}
+                    <span>{project.moreTechCount || "+more"}</span>
+                    <ChevronDown className="w-3 h-3" />
+                  </button>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex flex-wrap items-center gap-3 pt-3">
+                  {/* View Demo Amber Button */}
+                  <a
+                    href={project.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-[#f59e0b] hover:bg-[#d97706] text-[#0f3276] font-extrabold text-xs rounded-full px-6 py-2 shadow-2xs transition-colors text-center"
+                  >
+                    View Demo
+                  </a>
+
+                  {/* View Project Details Button */}
+                  <button
+                    onClick={() => onSelectProject && onSelectProject(project)}
+                    className="bg-white hover:bg-slate-50 text-[#0f3276] border-1.5 border-[#0f3276] font-extrabold text-xs rounded-full px-6 py-2 transition-colors text-center cursor-pointer"
+                  >
+                    View Project Details
+                  </button>
+                </div>
+
               </div>
 
-              {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-3 pt-3">
-                <a
-                  href={project.demoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="neu-btn neu-btn-primary min-w-[160px] text-center"
-                >
-                  View Demo
-                </a>
-
-                <button
-                  onClick={() => onSelectProject && onSelectProject(project)}
-                  className="neu-btn neu-btn-secondary min-w-[160px] text-center"
-                >
-                  View Project Details
-                </button>
-              </div>
-
-            </div>
-
-            {/* Right Image Container */}
-            <div className={`w-full md:w-5/12 ${idx % 2 === 1 ? 'md:order-1' : ''}`}>
-              <div className="neu-inset p-2 rounded-[20px] overflow-hidden">
+              {/* Right Side Illustration Image */}
+              <div className="w-full md:w-5/12 flex justify-center items-center">
                 <img
                   src={project.featuredImage}
                   alt={project.title}
-                  className="w-full h-48 sm:h-56 object-cover rounded-[14px]"
+                  className="w-full max-w-[260px] sm:max-w-[320px] md:max-w-none h-40 sm:h-52 md:h-60 object-contain drop-shadow-2xs"
                 />
               </div>
+
             </div>
+          ))}
+        </div>
 
-          </div>
-        ))}
       </div>
-
     </section>
   );
 }

@@ -5,8 +5,8 @@ import { Mail, MapPin } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="mt-16 py-12 px-6 border-t border-slate-200/80 bg-white">
-      <div className="max-w-[1050px] mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-sm font-medium text-slate-600">
+    <footer className="mt-16 py-10 border-t border-slate-200/80 bg-white">
+      <div className="portfolio-container flex flex-col md:flex-row items-center justify-between gap-6 text-sm font-medium text-slate-600">
         
         {/* Name & Location */}
         <div className="flex items-center gap-3">

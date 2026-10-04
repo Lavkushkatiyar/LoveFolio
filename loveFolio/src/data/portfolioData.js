@@ -30,19 +30,55 @@ export const SKILLS_DATA = [
   { id: "mongo", name: "Mongo DB", iconKey: "mongo", category: "Databases" }
 ];
 
+export const EXPERIENCE_DATA = [
+  {
+    id: "exp-1",
+    role: "Software Engineering Fellow",
+    company: "Crio.do",
+    period: "Jun 2022 - Present",
+    location: "Bengaluru, India (Remote)",
+    description: "Constructed 5+ production-ready full-stack micro-experiences through hands-on development. Designed RESTful API architectures, database schema modeling, and responsive frontend interfaces using React, Node.js, Express, and MongoDB.",
+    bullets: [
+      "Built complete set of REST APIs for QKart E-commerce platform with JWT authentication & password hashing.",
+      "Optimized client-side web application search performance using custom debouncing hooks in React.",
+      "Implemented MongoDB NoSQL data models with schema validation using Mongoose ODM and Joi.",
+      "Wrote integration test suites using Jest and Supertest framework to ensure high API reliability."
+    ]
+  }
+];
+
+export const EDUCATION_DATA = [
+  {
+    id: "edu-1",
+    degree: "Bachelor of Technology (B.Tech) in Computer Science & Engineering",
+    institution: "APJ Abdul Kalam Technical University (AKTU)",
+    period: "2018 - 2022",
+    location: "India",
+    grade: "First Class with Distinction",
+    description: "Relevant Coursework: Data Structures & Algorithms, Object-Oriented Programming (OOPs), Database Management Systems (DBMS), Operating Systems, Computer Networks, Software Engineering."
+  }
+];
+
 export const PROJECTS_DATA = [
   {
     id: "qkart-backend",
     title: "QKart Backend",
     category: "Full-Stack / Backend",
     date: "May 2023",
-    description: "QKart is an e-commerce backend platform constructed from scratch. Implemented Node.js Express server architecture, MongoDB schema modeling with Mongoose, JWT authentication pipeline, Joi data validation, and Jest integration tests.",
+    summary: '"QKart is an E-commerce application offering a variety of products for customers to choose from.',
+    bulletIntro: "During the course of this project,",
+    bullets: [
+      "Built the complete set of REST APIs for an E-commerce application following the best practices",
+      "Used MongoDB NoSQL database for data storage",
+      'Wrote unit and integration tests to test the implementation"'
+    ],
     demoUrl: "https://64c6d2d103fc333cfda9b025--qkartbackend-2023.netlify.app/",
     githubUrl: "https://github.com/Navneet-Crio/qkart-backend",
-    featuredImage: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop",
-    techStack: ["Node.js", "Express.js", "MongoDB", "Mongoose ODM", "JWT Token", "Joi Validation", "Postman", "Jest", "REST"],
+    featuredImage: "https://crio-directus-assets.s3.ap-south-1.amazonaws.com/f569c5c3-6bf6-470d-9f8c-91d837366d31.png",
+    techStack: ["Mongoose ODM", "JOI data validation", "Postman", "REST", "ES6", "MONGO QUERIES"],
+    moreTechCount: "+15 more",
     highlights: [
-      "Designed REST API endpoints for authentication, catalog, cart, and checkout.",
+      "Designed REST API endpoints for user auth, product catalog, user cart, and checkout.",
       "Secured API endpoints using JWT tokens and password hashing via bcrypt.",
       "Implemented request body schema validation using Joi.",
       "Wrote integration tests using Jest & Supertest framework."
@@ -59,11 +95,18 @@ export const PROJECTS_DATA = [
     title: "QKart Frontend",
     category: "Frontend",
     date: "Sep 2022",
-    description: "QKart is a modern E-commerce web application featuring user registration, product listing, real-time keyword search debouncing, product cart management, and multi-step checkout workflow built using React.",
+    summary: '"QKart is an E-commerce application offering a variety of products for customers to choose from.',
+    bulletIntro: "During the course of this project,",
+    bullets: [
+      "Implemented the user interface using React components with Material UI framework",
+      "Handled REST API integration for user auth, product listing, search debouncing, and cart management",
+      'Constructed responsive cart checkout workflow with address management"'
+    ],
     demoUrl: "https://qkart-frontend-updated.netlify.app/",
     githubUrl: "https://github.com/Navneet-Crio/qkart-frontend",
-    featuredImage: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=800&auto=format&fit=crop",
-    techStack: ["React.js", "React Hooks", "React Router", "Material-UI", "REST APIs", "Debouncing", "LocalStorage"],
+    featuredImage: "https://crio-directus-assets.s3.ap-south-1.amazonaws.com/e6fb82a2-423d-4f62-9962-f19f2f81fa8c.png",
+    techStack: ["React Hooks", "Forms", "Controlled Components", "REST", "JSON", "Error Handling"],
+    moreTechCount: "+16 more",
     highlights: [
       "Constructed reusable React components with clean state management.",
       "Optimized search performance by implementing custom debounce hook for API queries.",
@@ -82,11 +125,18 @@ export const PROJECTS_DATA = [
     title: "XBoard",
     category: "Frontend",
     date: "Aug 2022",
-    description: "XBoard is an news aggregator web application displaying top news stories from multiple categories. Created directly from high-fidelity Figma specs using JavaScript ES6, DOM Manipulation, and Bootstrap Accordions.",
+    summary: '"XBoard is a News Aggregator web application displaying top news stories from multiple categories.',
+    bulletIntro: "During the course of this project,",
+    bullets: [
+      "Built responsive news aggregator interface from Figma design mockups",
+      "Fetched live RSS news feeds asynchronously using JS Fetch API and DOM Manipulation",
+      'Integrated Bootstrap accordion and carousel widgets for article preview"'
+    ],
     demoUrl: "https://basic-x-board.netlify.app/",
     githubUrl: "https://github.com/Navneet-Crio/xboard",
-    featuredImage: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800&auto=format&fit=crop",
-    techStack: ["HTML5", "CSS3", "JavaScript ES6", "Bootstrap", "Accordion Components", "Figma", "REST APIs"],
+    featuredImage: "https://crio-directus-assets.s3.ap-south-1.amazonaws.com/f7dfc8ad-a174-4d2b-8af7-c1ff1e1e8719.png",
+    techStack: ["HTML", "CSS", "Figma", "Bootstrap Accordion", "Bootstrap", "ES6"],
+    moreTechCount: "+10 more",
     highlights: [
       "Converted Figma design mockups into responsive HTML/CSS layouts.",
       "Fetched live RSS/JSON news feeds asynchronously and parsed content into DOM nodes.",
@@ -101,11 +151,18 @@ export const PROJECTS_DATA = [
     title: "QTripDynamic",
     category: "Frontend",
     date: "Jul 2022",
-    description: "QTrip is a dynamic travel booking application where users can discover cities, filter adventure trips by duration & category, inspect detailed itineraries, and place trip reservations.",
+    summary: '"QTrip is a dynamic travel booking application where users can discover cities and filter adventures.',
+    bulletIntro: "During the course of this project,",
+    bullets: [
+      "Constructed multi-page dynamic travel booking web application using Vanilla JS",
+      "Implemented multi-criteria filter engine for adventure duration and category tags",
+      'Saved user filter selections to URL query params and LocalStorage"'
+    ],
     demoUrl: "https://qtrip-fornt-end.netlify.app/",
     githubUrl: "https://github.com/Navneet-Crio/qtrip-dynamic",
-    featuredImage: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=800&auto=format&fit=crop",
-    techStack: ["JavaScript ES6", "DOM Manipulation", "REST APIs", "Fetch API", "Async/Await", "LocalStorage", "Bootstrap"],
+    featuredImage: "https://crio-directus-assets.s3.ap-south-1.amazonaws.com/0ba0c306-851a-451e-89bb-623289fca9a3.png",
+    techStack: ["HTML", "CSS", "ES6", "JavaScript", "Developer Tools", "Bootstrap"],
+    moreTechCount: "+15 more",
     highlights: [
       "Built multi-page navigation connecting City listing, Adventure cards, Details page, and Reservations.",
       "Implemented multi-criteria filter logic (Duration range + Category tags).",
@@ -122,12 +179,19 @@ export const PROJECTS_DATA = [
     id: "qtrip-static",
     title: "QTripStatic",
     category: "Frontend",
-    date: "Jun 2022",
-    description: "The static web layout for QTrip travel website. Created using semantic HTML5, modern CSS3 Flexbox/Grid, and responsive media queries to support all mobile & desktop screen sizes.",
+    date: "Jun - Jul 2022",
+    summary: '"QTrip is a travel website offering adventure trip bookings across multiple destinations.',
+    bulletIntro: "During the course of this project,",
+    bullets: [
+      "Created responsive static web page layout using semantic HTML5 and CSS3 Flexbox",
+      "Built multi-column city adventure cards with responsive breakpoints",
+      'Deployed static website to Netlify hosting"'
+    ],
     demoUrl: "https://js19920722-gmail-com-makes-great-sites-8bb9c.netlify.app/index.html",
     githubUrl: "https://github.com/Navneet-Crio/qtrip-static",
-    featuredImage: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop",
-    techStack: ["HTML5", "CSS3", "CSS Flexbox", "Bootstrap Grid", "Responsive Web Design"],
+    featuredImage: "https://crio-directus-assets.s3.ap-south-1.amazonaws.com/ec48bef5-2566-4af5-8a6e-2f978e63d1b5.png",
+    techStack: ["HTML", "CSS", "Developer Tools", "Bootstrap", "CSS Flexbox", "Responsive Design"],
+    moreTechCount: "+9 more",
     highlights: [
       "Structured semantic HTML5 layout with high accessibility.",
       "Styled multi-column grid layouts with pure CSS Flexbox and Bootstrap components.",
@@ -139,14 +203,3 @@ export const PROJECTS_DATA = [
     ]
   }
 ];
-
-export const DSA_STATS = {
-  totalSolved: 175,
-  topics: [
-    { topic: "Arrays & Strings", count: 52, percentage: 85 },
-    { topic: "Hash Maps & Two Pointers", count: 34, percentage: 78 },
-    { topic: "Recursion & Backtracking", count: 28, percentage: 72 },
-    { topic: "Trees & Binary Search", count: 36, percentage: 80 },
-    { topic: "Graphs & Dynamic Programming", count: 25, percentage: 70 }
-  ]
-};
