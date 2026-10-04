@@ -1,17 +1,17 @@
 export const PROFILE_DATA = {
-  name: "Navneet",
+  name: "Lavkush",
   title: "Full-Stack Web Developer",
   subtitle: "I have earned many skills and built industry grade projects using them. Explore my projects below",
-  avatarUrl: "https://api.dicebear.com/7.x/bottts/svg?seed=NavneetDev",
-  email: "js19920722@gmail.com",
-  phone: "+91 79824 15756",
+  avatarUrl: "https://api.dicebear.com/7.x/bottts/svg?seed=Lavkush",
+  email: "[EMAIL_ADDRESS]",
+  phone: "+91 82859 57353",
   location: "New Delhi, India",
-  github: "https://github.com/Navneet-Crio",
-  linkedin: "https://linkedin.com/in/navneet-crio",
+  github: "https://github.com/LavkushKatiyar",
+  linkedin: "https://linkedin.com/in/Lavkush-Katiyar",
   stats: {
     verifiedSkillsCount: 14,
     professionalProjects: 5,
-    dsaSolvedCount: "175+",
+    dsaSolvedCount: "200+",
   }
 };
 
