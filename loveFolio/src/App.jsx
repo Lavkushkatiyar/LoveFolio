@@ -8,7 +8,7 @@ import EducationSection from './components/EducationSection';
 import Footer from './components/Footer';
 import SkillModal from './components/SkillModal';
 import ProjectModal from './components/ProjectModal';
-
+import QTripCard from './components/Project';
 export default function App() {
   const [activeSkill, setActiveSkill] = useState(null);
   const [activeProject, setActiveProject] = useState(null);
@@ -32,8 +32,8 @@ export default function App() {
         <SkillsSection onSelectSkill={(skill) => setActiveSkill(skill)} />
         <br />
         <br />
-        <ProjectsSection onSelectProject={(project) => setActiveProject(project)} />
         <br />
+        <ProjectsSection onSelectProject={(project) => setActiveProject(project)} />
         <br />
         <EducationSection />
         <br />

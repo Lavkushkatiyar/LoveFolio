@@ -6,7 +6,7 @@ export default function ProjectsSection({ onSelectProject }) {
   return (
     <section id="projects" className="py-8 sm:py-10">
       <div className="portfolio-container">
-        
+
         {/* Section Title with Horizontal Extension Line */}
         <div className="flex items-center gap-3 mb-6 sm:mb-8">
           <h2 className="text-xl sm:text-2xl font-black text-[#009BFF] whitespace-nowrap font-manrope">
@@ -24,7 +24,7 @@ export default function ProjectsSection({ onSelectProject }) {
             >
               {/* Left Content Column */}
               <div className="w-full md:w-7/12 text-left space-y-2">
-                
+
                 {/* Project Title */}
                 <h3 className="text-xl sm:text-2xl font-black text-[#0f3276] font-manrope tracking-tight">
                   {project.title}
