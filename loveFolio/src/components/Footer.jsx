@@ -1,53 +1,52 @@
 import React from 'react';
 import { PROFILE_DATA } from '../data/portfolioData';
-import { GithubIcon, LinkedinIcon } from './SocialIcons';
-import { Mail, MapPin } from 'lucide-react';
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="mt-16 py-10 border-t border-slate-200/80 bg-white">
-      <div className="portfolio-container flex flex-col md:flex-row items-center justify-between gap-6 text-sm font-medium text-slate-600">
+    <footer className="w-full bg-[#090e1c] mt-16 border-t border-[#252a39]">
+      <div className="max-w-[1200px] mx-auto px-gutter py-8 flex flex-col md:flex-row items-center justify-between gap-6">
         
-        {/* Name & Location */}
-        <div className="flex items-center gap-3">
-          <span className="font-extrabold text-[#009BFF] text-lg font-manrope">
-            {PROFILE_DATA.name}
-          </span>
-          <span>•</span>
-          <span className="flex items-center gap-1 text-slate-500 text-xs sm:text-sm">
-            <MapPin className="w-3.5 h-3.5 text-slate-400" />
-            {PROFILE_DATA.location}
-          </span>
+        {/* Left Info & Copyright */}
+        <div className="flex flex-col items-center md:items-start gap-1">
+          <div className="flex items-center gap-2 text-[#bcc9cd]">
+            <span className="material-symbols-outlined text-[16px] text-[#4cd7f6]">location_on</span>
+            <span className="font-label-md text-label-md text-[#bcc9cd]">{PROFILE_DATA.location}</span>
+          </div>
+          <div className="font-body-sm text-body-sm text-[#bcc9cd]">
+            © {currentYear} {PROFILE_DATA.name}. Crafted with engineering precision.
+          </div>
         </div>
 
-        {/* Minimal Contact & Social Links */}
+        {/* Right Social Links */}
         <div className="flex items-center gap-6">
           <a
-            href={`mailto:${PROFILE_DATA.email}`}
-            className="flex items-center gap-1.5 hover:text-[#009BFF] transition-colors text-xs sm:text-sm"
-          >
-            <Mail className="w-4 h-4 text-slate-500" />
-            <span>{PROFILE_DATA.email}</span>
-          </a>
-
-          <a
+            className="flex items-center gap-1 font-label-md text-label-md text-[#bcc9cd] hover:text-[#4cd7f6] transition-colors"
             href={PROFILE_DATA.github}
             target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 hover:text-[#009BFF] transition-colors text-xs sm:text-sm"
+            rel="noreferrer"
           >
-            <GithubIcon className="w-4 h-4 text-slate-500" />
+            <span className="material-symbols-outlined text-[18px]">terminal</span>
             <span>GitHub</span>
           </a>
 
           <a
+            className="flex items-center gap-1 font-label-md text-label-md text-[#bcc9cd] hover:text-[#4cd7f6] transition-colors"
             href={PROFILE_DATA.linkedin}
             target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 hover:text-[#009BFF] transition-colors text-xs sm:text-sm"
+            rel="noreferrer"
           >
-            <LinkedinIcon className="w-4 h-4 text-[#009BFF]" />
+            <span className="material-symbols-outlined text-[18px]">hub</span>
             <span>LinkedIn</span>
+          </a>
+
+          <a
+            className="flex items-center gap-1 font-label-md text-label-md text-[#bcc9cd] hover:text-[#4cd7f6] transition-colors"
+            href={`mailto:${PROFILE_DATA.email}`}
+          >
+            <span className="material-symbols-outlined text-[18px]">mail</span>
+            <span>Email</span>
           </a>
         </div>
 

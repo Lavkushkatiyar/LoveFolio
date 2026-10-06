@@ -1,48 +1,86 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { PROFILE_DATA } from '../data/portfolioData';
 
 export default function Navbar() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const navLinks = [
+    { label: 'Skills', href: '#skills' },
+    { label: 'Projects', href: '#projects' },
+    { label: 'Experience', href: '#experience' },
+    { label: 'Education', href: '#education' },
+    { label: 'Contact', href: '#contact' },
+  ];
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 bg-[#f4f6fb]/95 backdrop-blur-md border-b border-slate-200/60">
-      <div className="portfolio-container h-[56px] sm:h-[64px] flex items-center justify-between">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#0e1321]/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] border-b border-[#1e293b]">
+      <div className="h-20 max-w-[1200px] mx-auto px-gutter flex items-center justify-between gap-4">
         
-        {/* Brand Logo */}
-        <a href="#top" className="flex items-center gap-2 group text-decoration-none shrink-0">
-          <div className="w-8 h-8 rounded-xl bg-white shadow-xs border border-slate-200 flex items-center justify-center text-[#009BFF] group-hover:scale-105 transition-transform">
-            <svg viewBox="0 0 100 100" className="w-4 h-4 fill-current text-[#009BFF]">
-              <path d="M50 20c-15 0-25 10-25 25 0 8 4 15 10 19v11c0 3 2 5 5 5h20c3 0 5-2 5-5V64c6-4 10-11 10-19 0-15-10-25-25-25zm-12 25c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4-4-4-1.8-4-4zm24 0c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4-4-1.8-4-4z" />
-            </svg>
+        {/* Brand */}
+        <a href="#top" className="flex items-center gap-3 group" aria-label="Go to top">
+          <div className="w-9 h-9 rounded-lg bg-[#252a39] flex items-center justify-center group-hover:bg-[#06b6d4] transition-colors">
+            <span className="font-label-lg text-label-lg text-[#4cd7f6] group-hover:text-[#003640] font-bold">LK</span>
+          </div>
+          <div className="flex flex-col">
+            <span className="font-headline-sm text-headline-sm text-[#dee2f6] leading-none">{PROFILE_DATA.name}</span>
+            <span className="font-label-sm text-label-sm text-[#bcc9cd] uppercase tracking-wider mt-0.5">{PROFILE_DATA.title}</span>
           </div>
         </a>
 
-        {/* Responsive Nav Links */}
-        <nav className="flex items-center gap-3 sm:gap-6 text-xs sm:text-sm font-semibold overflow-x-auto no-scrollbar py-1">
-          <a
-            href="#skills"
-            className="text-slate-700 hover:text-[#009BFF] transition-colors whitespace-nowrap"
-          >
-            Skills
-          </a>
-          <a
-            href="#projects"
-            className="text-slate-700 hover:text-[#009BFF] transition-colors whitespace-nowrap"
-          >
-            Projects
-          </a>
-          <a
-            href="#experience"
-            className="text-slate-700 hover:text-[#009BFF] transition-colors whitespace-nowrap"
-          >
-            Experience
-          </a>
-          <a
-            href="#education"
-            className="text-slate-700 hover:text-[#009BFF] transition-colors whitespace-nowrap"
-          >
-            Education
-          </a>
+        {/* Desktop Navigation */}
+        <nav className="hidden lg:flex items-center gap-1">
+          {navLinks.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              className="px-4 py-2 font-label-md text-label-md text-[#bcc9cd] hover:text-[#dee2f6] hover:bg-[#252a39] rounded-lg transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
         </nav>
 
+        {/* Action Buttons */}
+        <div className="flex items-center gap-3">
+          <a
+            href="#contact"
+            className="px-4 py-2 rounded-lg bg-[#0053db] text-[#cdd7ff] hover:bg-[#06b6d4] hover:text-[#003640] font-label-md text-label-md transition-all shadow-[0_0_20px_rgba(6,182,212,0.15)] flex items-center gap-1.5"
+          >
+            <span>Let's Talk</span>
+            <span className="material-symbols-outlined text-[16px]">arrow_outward</span>
+          </a>
+
+          {/* Mobile Drawer Button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="lg:hidden w-9 h-9 rounded-lg bg-[#252a39] flex items-center justify-center text-[#dee2f6] hover:text-[#4cd7f6] transition-colors"
+            aria-label="Toggle Navigation Menu"
+          >
+            <span className="material-symbols-outlined text-[20px]">
+              {mobileMenuOpen ? 'close' : 'menu'}
+            </span>
+          </button>
+        </div>
+
       </div>
+
+      {/* Mobile Menu Drawer */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden bg-[#161b2a] border-b border-[#252a39] px- gutter py-4 animate-fade-in space-y-2">
+          <nav className="flex flex-col space-y-1">
+            {navLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-4 py-2.5 rounded-lg text-sm font-label-md text-[#dee2f6] hover:bg-[#252a39] transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+        </div>
+      )}
     </header>
   );
 }

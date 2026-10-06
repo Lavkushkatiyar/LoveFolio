@@ -1,112 +1,130 @@
-import React from 'react';
-import { X, CheckCircle2, Calendar, FolderGit2, Award } from 'lucide-react';
+import React, { useEffect } from 'react';
+import { PROJECTS_DATA } from '../data/portfolioData';
 
 export default function SkillModal({ skill, onClose }) {
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
+
   if (!skill) return null;
+
+  const skillDetailsMap = {
+    linux: { icon: 'terminal', subtitle: 'Core OS', colorClass: 'text-[#4cd7f6]' },
+    http: { icon: 'http', subtitle: 'Protocols', colorClass: 'text-[#4cd7f6]' },
+    css: { icon: 'css', subtitle: 'Flexbox & Grid', colorClass: 'text-[#4cd7f6]' },
+    bootstrap: { icon: 'view_quilt', subtitle: 'UI Framework', colorClass: 'text-[#b4c5ff]' },
+    html: { icon: 'html', subtitle: 'Semantic Web', colorClass: 'text-[#4cd7f6]' },
+    rest: { icon: 'api', subtitle: 'Architecture', colorClass: 'text-[#b4c5ff]' },
+    git: { icon: 'alt_route', subtitle: 'Version Control', colorClass: 'text-[#7bd0ff]' },
+    js: { icon: 'javascript', subtitle: 'ES6+ Async', colorClass: 'text-[#4cd7f6]' },
+    react: { icon: 'deployed_code', subtitle: 'Hooks & State', colorClass: 'text-[#4cd7f6]' },
+    node: { icon: 'dns', subtitle: 'Runtime', colorClass: 'text-[#b4c5ff]' },
+    express: { icon: 'route', subtitle: 'Middleware', colorClass: 'text-[#7bd0ff]' },
+    mongo: { icon: 'storage', subtitle: 'NoSQL DB', colorClass: 'text-[#4cd7f6]' },
+  };
+
+  const detail = skillDetailsMap[skill.iconKey] || { icon: 'code', subtitle: skill.category, colorClass: 'text-[#4cd7f6]' };
+
+  const projectsUsed = PROJECTS_DATA.filter((p) =>
+    p.techStack.some(
+      (t) =>
+        t.toLowerCase().includes(skill.name.toLowerCase()) ||
+        skill.name.toLowerCase().includes(t.toLowerCase())
+    )
+  );
 
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div
-        className="neu-flat-lg max-w-lg w-full p-6 sm:p-8 animate-fade-in relative"
+        className="bg-[#161b2a] rounded-2xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-[#252a39] animate-scale-up relative overflow-hidden max-h-[90vh] overflow-y-auto text-[#dee2f6]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="neu-btn neu-btn-icon absolute top-4 right-4 text-slate-500 hover:text-slate-800"
+          className="absolute top-4 right-4 w-8 h-8 rounded-lg bg-[#252a39] text-[#bcc9cd] hover:text-[#dee2f6] hover:bg-[#303444] transition-colors flex items-center justify-center cursor-pointer"
           aria-label="Close modal"
         >
-          <X className="w-5 h-5" />
+          <span className="material-symbols-outlined text-[18px]">close</span>
         </button>
 
-        {/* Modal Header with Technology Brand Color Badge */}
-        <div className="flex items-center gap-4 mb-6">
-          <div
-            className="w-16 h-16 rounded-2xl neu-inset p-3 flex items-center justify-center font-black text-lg shadow-inner"
-            style={{
-              backgroundColor: skill.bgColor,
-              color: skill.textColor,
-              border: `2px solid ${skill.brandColor}`
-            }}
-          >
-            {skill.name.slice(0, 2).toUpperCase()}
+        {/* Modal Header */}
+        <div className="flex items-center gap-4 mb-6 pt-2">
+          <div className="w-14 h-14 rounded-xl bg-[#252a39] flex items-center justify-center shrink-0 border border-[#3d494c]">
+            <span className={`material-symbols-outlined text-[32px] ${detail.colorClass}`}>
+              {detail.icon}
+            </span>
           </div>
 
           <div>
             <div className="flex items-center gap-2">
-              <h3 className="text-2xl font-extrabold text-slate-800 dark:text-slate-100">
+              <h3 className="font-headline-md text-2xl font-bold text-[#dee2f6]">
                 {skill.name}
               </h3>
-              <CheckCircle2 className="w-5 h-5 text-emerald-500" />
+              <span className="material-symbols-outlined text-[#4cd7f6] text-[20px]">verified</span>
             </div>
 
             <div className="flex items-center gap-2 mt-1">
-              <span
-                className="text-xs font-bold px-2.5 py-0.5 rounded-full"
-                style={{
-                  backgroundColor: skill.bgColor,
-                  color: skill.textColor,
-                }}
-              >
+              <span className="font-label-sm text-label-sm px-2.5 py-0.5 rounded bg-[#252a39] text-[#4cd7f6] border border-[#3d494c]">
                 {skill.category}
               </span>
-              <span className="text-xs text-slate-500 font-semibold flex items-center gap-1">
-                <Calendar className="w-3.5 h-3.5" />
-                Verified: {skill.achievedAt}
+              <span className="font-label-sm text-label-sm text-[#bcc9cd] flex items-center gap-1">
+                <span className="material-symbols-outlined text-[14px]">workspace_premium</span>
+                <span>Verified Competency</span>
               </span>
             </div>
           </div>
         </div>
 
-        {/* Skill Details Body */}
-        <div className="space-y-4 text-slate-600 dark:text-slate-300">
-          <div className="neu-inset p-4 rounded-xl">
-            <div className="text-xs font-extrabold text-slate-500 uppercase mb-1">Skill Description</div>
-            <p className="text-sm leading-relaxed">{skill.description}</p>
+        {/* Details Body */}
+        <div className="space-y-4 text-[#bcc9cd] font-body-sm">
+          <div className="bg-[#1a1f2e] rounded-xl p-4 border border-[#252a39] space-y-1">
+            <div className="font-label-sm text-label-sm text-[#4cd7f6] uppercase tracking-wider">
+              Skill Overview
+            </div>
+            <p className="font-body-sm text-body-sm text-[#dee2f6] leading-relaxed">
+              Demonstrated hands-on expertise in {skill.name} ({detail.subtitle}) across production modules and micro-architectures.
+            </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            <div className="neu-flat p-4 text-center">
-              <div className="text-xs text-slate-500 font-bold uppercase">Proficiency Level</div>
-              <div className="text-lg font-extrabold text-blue-600 dark:text-blue-400 mt-0.5">
-                {skill.level}
-              </div>
+          {/* Applied Projects */}
+          <div>
+            <div className="font-label-sm text-label-sm text-[#4cd7f6] uppercase tracking-wider mb-2 flex items-center gap-1.5">
+              <span className="material-symbols-outlined text-[16px]">folder</span>
+              <span>Applied In Projects ({projectsUsed.length})</span>
             </div>
-            <div className="neu-flat p-4 text-center">
-              <div className="text-xs text-slate-500 font-bold uppercase">Status</div>
-              <div className="text-lg font-extrabold text-emerald-600 dark:text-emerald-400 mt-0.5 flex items-center justify-center gap-1">
-                <Award className="w-4 h-4 text-amber-500" />
-                <span>Crio Verified</span>
-              </div>
-            </div>
-          </div>
 
-          {/* Projects Implemented In */}
-          {skill.projectsUsed && skill.projectsUsed.length > 0 && (
-            <div>
-              <div className="text-xs font-extrabold text-slate-500 uppercase mb-2 flex items-center gap-1">
-                <FolderGit2 className="w-4 h-4 text-blue-500" />
-                <span>Applied In Projects</span>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {skill.projectsUsed.map((pName) => (
-                  <span
-                    key={pName}
-                    className="neu-badge text-xs font-bold text-slate-700 dark:text-slate-200"
-                  >
-                    {pName}
-                  </span>
+            {projectsUsed.length > 0 ? (
+              <div className="space-y-2">
+                {projectsUsed.map((proj) => (
+                  <div key={proj.id} className="p-3 rounded-xl bg-[#1a1f2e] border border-[#252a39] flex items-center justify-between">
+                    <div>
+                      <div className="font-headline-sm text-sm font-semibold text-[#dee2f6]">{proj.title}</div>
+                      <div className="font-label-sm text-xs text-[#bcc9cd]">{proj.category} • {proj.date}</div>
+                    </div>
+                    <span className="font-label-sm text-label-sm px-2 py-1 rounded bg-[#252a39] text-[#4cd7f6] border border-[#3d494c]">
+                      Applied
+                    </span>
+                  </div>
                 ))}
               </div>
-            </div>
-          )}
+            ) : (
+              <div className="p-3 rounded-xl bg-[#1a1f2e] border border-[#252a39] font-body-sm text-xs text-[#bcc9cd]">
+                Integrated in core technical workflows and micro-experience modules.
+              </div>
+            )}
+          </div>
         </div>
 
-        {/* Footer CTA */}
-        <div className="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800 flex justify-end">
+        {/* Footer */}
+        <div className="mt-6 pt-4 border-t border-[#252a39] flex justify-end">
           <button
             onClick={onClose}
-            className="neu-btn neu-btn-primary px-6 py-2 text-xs"
+            className="px-6 py-2.5 rounded-lg bg-[#252a39] text-[#dee2f6] hover:bg-[#303444] font-label-md text-label-md transition-colors border border-[#3d494c] cursor-pointer"
           >
             Close
           </button>
