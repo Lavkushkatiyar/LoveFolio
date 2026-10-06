@@ -10,6 +10,7 @@ async def seed_profile() -> None:
     async with async_session_factory() as session:
         result = await session.execute(select(Profile))
         profile = result.scalar_one_or_none()
+        print(profile)
 
         if profile is None:
             profile = Profile(
