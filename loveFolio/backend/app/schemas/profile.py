@@ -19,4 +19,19 @@ class ProfileResponse(BaseModel):
     dsa_solved_count: str
 
 
+
+class ProfileUpdate(BaseModel):
+    name: str | None = None
+    title: str | None = None
+    subtitle: str | None = None
+    avatar_url: str | None = None
+    email: str | None = None
+    phone: str | None = None
+    location: str | None = None
+    github: str | None = None
+    linkedin: str | None = None
+    verified_skills_count: int | None = None
+    professional_projects: int | None = None
+    dsa_solved_count: str | None = None
+
     
