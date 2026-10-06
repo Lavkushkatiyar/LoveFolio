@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, CheckCircle2, MessageSquare } from 'lucide-react';
-import { GithubIcon, LinkedinIcon } from './SocialIcons';
 import { PROFILE_DATA } from '../data/portfolioData';
 
 export default function ContactSection() {
@@ -18,79 +16,87 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-16 px-4 md:px-8 max-w-6xl mx-auto">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+    <section className="scroll-mt-24 w-full bg-[#090e1c] py-16 sm:py-20" id="contact">
+      <div className="max-w-[1200px] mx-auto px-gutter space-y-8">
         
-        {/* Contact Info Card */}
-        <div className="lg:col-span-5 neu-flat p-8 space-y-6">
-          <div>
-            <span className="neu-badge text-xs text-blue-600 dark:text-blue-400 font-bold">
-              Get In Touch
-            </span>
-            <h2 className="text-3xl font-extrabold text-slate-800 dark:text-slate-100 mt-2">
-              Let's Connect & Collaborate
-            </h2>
-            <p className="text-slate-600 dark:text-slate-400 text-sm mt-2">
-              Available for full-stack developer opportunities, software engineering roles, and technical discussions.
-            </p>
-          </div>
+        {/* Direct Banner Card matching code.html */}
+        <div className="relative rounded-3xl bg-gradient-to-r from-[#1a1f2e] via-[#252a39] to-[#1a1f2e] p-8 sm:p-12 overflow-hidden shadow-xl border border-[#252a39]">
+          <div className="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-[#06b6d4]/15 blur-3xl pointer-events-none" />
 
-          <div className="space-y-4 pt-2">
-            <div className="flex items-center gap-4 p-3 neu-inset rounded-2xl">
-              <div className="w-10 h-10 neu-btn neu-btn-icon text-blue-600">
-                <Mail className="w-5 h-5" />
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            {/* Left Column Text */}
+            <div className="lg:col-span-7 space-y-4 text-left">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#090e1c] text-[#4cd7f6] font-label-sm text-label-sm border border-[#252a39]">
+                <span className="w-2 h-2 rounded-full bg-[#4cd7f6]" />
+                <span>Open to Conversations</span>
               </div>
-              <div>
-                <div className="text-xs text-slate-500 font-bold uppercase">Email Address</div>
-                <a href={`mailto:${PROFILE_DATA.email}`} className="text-sm font-extrabold text-slate-800 dark:text-slate-200 hover:text-blue-600">
-                  {PROFILE_DATA.email}
-                </a>
+              <h2 className="font-display text-3xl sm:text-5xl font-bold text-[#dee2f6]">
+                Let’s Build Something Resilient Together.
+              </h2>
+              <p className="font-body-md text-body-md text-[#bcc9cd] max-w-xl">
+                Whether you are looking to hire a dedicated full-stack engineer, collaborate on modern architectures, or discuss software problems, feel free to reach out directly.
+              </p>
+              <div className="flex items-center gap-2 text-[#bcc9cd] pt-2">
+                <span className="material-symbols-outlined text-[#4cd7f6] text-[20px]">location_on</span>
+                <span className="font-label-md text-label-md">{PROFILE_DATA.location} • Open to Remote Worldwide</span>
               </div>
             </div>
 
-            <div className="flex items-center gap-4 p-3 neu-inset rounded-2xl">
-              <div className="w-10 h-10 neu-btn neu-btn-icon text-emerald-600">
-                <Phone className="w-5 h-5" />
-              </div>
-              <div>
-                <div className="text-xs text-slate-500 font-bold uppercase">Phone / WhatsApp</div>
-                <a href={`tel:${PROFILE_DATA.phone}`} className="text-sm font-extrabold text-slate-800 dark:text-slate-200 hover:text-emerald-600">
-                  {PROFILE_DATA.phone}
-                </a>
-              </div>
+            {/* Right Column Direct Links */}
+            <div className="lg:col-span-5 flex flex-col gap-3">
+              <a
+                className="w-full px-5 py-3.5 rounded-xl bg-[#06b6d4] text-[#003640] font-label-md text-label-md font-semibold hover:opacity-95 shadow-lg shadow-[#06b6d4]/20 flex items-center justify-center gap-2 transition-all"
+                href={`mailto:${PROFILE_DATA.email}`}
+              >
+                <span className="material-symbols-outlined text-[20px]">mail</span>
+                <span>{PROFILE_DATA.email}</span>
+              </a>
+
+              <a
+                className="w-full px-5 py-3.5 rounded-xl bg-[#090e1c] text-[#dee2f6] font-label-md text-label-md font-semibold hover:bg-[#343948] flex items-center justify-center gap-2 transition-all border border-[#252a39]"
+                href={PROFILE_DATA.github}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span className="material-symbols-outlined text-[20px]">terminal</span>
+                <span>Connect on GitHub</span>
+              </a>
+
+              <a
+                className="w-full px-5 py-3.5 rounded-xl bg-[#090e1c] text-[#dee2f6] font-label-md text-label-md font-semibold hover:bg-[#343948] flex items-center justify-center gap-2 transition-all border border-[#252a39]"
+                href={PROFILE_DATA.linkedin}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span className="material-symbols-outlined text-[20px]">hub</span>
+                <span>Connect on LinkedIn</span>
+              </a>
             </div>
 
-            <div className="flex items-center gap-4 p-3 neu-inset rounded-2xl">
-              <div className="w-10 h-10 neu-btn neu-btn-icon text-amber-600">
-                <MapPin className="w-5 h-5" />
-              </div>
-              <div>
-                <div className="text-xs text-slate-500 font-bold uppercase">Location</div>
-                <div className="text-sm font-extrabold text-slate-800 dark:text-slate-200">
-                  {PROFILE_DATA.location}
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 
-        {/* Contact Form */}
-        <div className="lg:col-span-7 neu-flat p-8">
-          <h3 className="text-2xl font-extrabold text-slate-800 dark:text-slate-100 mb-6 flex items-center gap-2">
-            <MessageSquare className="w-5 h-5 text-blue-500" />
+        {/* Direct Interactive Message Form */}
+        <div className="bg-[#161b2a] rounded-2xl p-6 sm:p-8 border border-[#252a39]">
+          <h3 className="font-headline-md text-xl font-bold text-[#dee2f6] mb-4 flex items-center gap-2">
+            <span className="material-symbols-outlined text-[#4cd7f6] text-[22px]">send</span>
             <span>Send a Direct Message</span>
           </h3>
 
           {submitted ? (
-            <div className="neu-inset p-8 text-center text-emerald-600 dark:text-emerald-400 font-bold animate-fade-in rounded-2xl">
-              <CheckCircle2 className="w-12 h-12 mx-auto mb-2 text-emerald-500" />
-              Thank you! Your message has been sent successfully. Navneet will get back to you shortly.
+            <div className="p-6 text-center bg-[#090e1c] border border-[#06b6d4]/40 rounded-xl text-[#4cd7f6] space-y-2 animate-fade-in font-label-md">
+              <span className="material-symbols-outlined text-3xl text-[#4cd7f6]">task_alt</span>
+              <h4 className="font-bold text-base text-[#dee2f6]">Message Sent Successfully!</h4>
+              <p className="text-xs text-[#bcc9cd]">
+                Thank you for reaching out. {PROFILE_DATA.name} will reply to your email shortly.
+              </p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
+                  <label className="block font-label-sm text-xs text-[#bcc9cd] mb-1">
                     Your Name *
                   </label>
                   <input
@@ -99,11 +105,11 @@ export default function ContactSection() {
                     placeholder="John Doe"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="neu-input"
+                    className="w-full px-4 py-2.5 rounded-xl bg-[#090e1c] border border-[#252a39] text-sm text-[#dee2f6] placeholder-[#869397] focus:outline-none focus:border-[#06b6d4] transition-all font-body-sm"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
+                  <label className="block font-label-sm text-xs text-[#bcc9cd] mb-1">
                     Your Email *
                   </label>
                   <input
@@ -112,44 +118,44 @@ export default function ContactSection() {
                     placeholder="john@example.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="neu-input"
+                    className="w-full px-4 py-2.5 rounded-xl bg-[#090e1c] border border-[#252a39] text-sm text-[#dee2f6] placeholder-[#869397] focus:outline-none focus:border-[#06b6d4] transition-all font-body-sm"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
+                <label className="block font-label-sm text-xs text-[#bcc9cd] mb-1">
                   Subject
                 </label>
                 <input
                   type="text"
-                  placeholder="Project inquiry / Full-stack position"
+                  placeholder="Project Inquiry / Job Opportunity"
                   value={formData.subject}
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                  className="neu-input"
+                  className="w-full px-4 py-2.5 rounded-xl bg-[#090e1c] border border-[#252a39] text-sm text-[#dee2f6] placeholder-[#869397] focus:outline-none focus:border-[#06b6d4] transition-all font-body-sm"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
+                <label className="block font-label-sm text-xs text-[#bcc9cd] mb-1">
                   Message *
                 </label>
                 <textarea
                   required
                   rows={4}
-                  placeholder="Hi Navneet, I would like to discuss..."
+                  placeholder={`Hi ${PROFILE_DATA.name}, I would like to discuss...`}
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="neu-input resize-none"
+                  className="w-full px-4 py-2.5 rounded-xl bg-[#090e1c] border border-[#252a39] text-sm text-[#dee2f6] placeholder-[#869397] focus:outline-none focus:border-[#06b6d4] transition-all resize-none font-body-sm"
                 />
               </div>
 
               <button
                 type="submit"
-                className="neu-btn neu-btn-primary w-full py-3.5 text-base justify-center font-bold shadow-md"
+                className="w-full py-3.5 px-6 rounded-xl bg-[#06b6d4] text-[#003640] font-label-md text-label-md font-semibold hover:opacity-95 shadow-lg shadow-[#06b6d4]/20 flex items-center justify-center gap-2 transition-all cursor-pointer"
               >
                 <span>Send Message</span>
-                <Send className="w-4 h-4 ml-1" />
+                <span className="material-symbols-outlined text-[18px]">send</span>
               </button>
             </form>
           )}

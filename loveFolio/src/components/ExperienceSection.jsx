@@ -1,68 +1,72 @@
 import React from 'react';
-import { Briefcase, Calendar, MapPin } from 'lucide-react';
 import { EXPERIENCE_DATA } from '../data/portfolioData';
 
 export default function ExperienceSection() {
-  return (
-    <section id="experience" className="py-8 sm:py-10">
-      <div className="portfolio-container flex flex-col gap-4">
-        <div className="mb-6 flex items-center gap-3 sm:mb-8">
-          <h2 className="whitespace-nowrap font-manrope text-xl font-black text-[#009BFF] sm:text-2xl">
-            Work Experience
-          </h2>
+  const iconMap = ['verified', 'speed', 'database', 'bug_report'];
+  const titleMap = ['REST API Architecture', 'Frontend Performance', 'Schema & Validations', 'Testing & Reliability'];
 
-          <div className="hidden h-[2px] flex-1 bg-[#009BFF] sm:block" />
+  return (
+    <section className="scroll-mt-24 w-full bg-[#090e1c] py-16 sm:py-20" id="experience">
+      <div className="max-w-[1200px] mx-auto px-gutter space-y-8">
+        
+        {/* Section Title Header */}
+        <div className="flex flex-col space-y-2">
+          <div className="flex items-center gap-2">
+            <span className="h-px w-8 bg-[#4cd7f6]" />
+            <span className="font-label-sm text-label-sm text-[#4cd7f6] uppercase tracking-widest">Career Path</span>
+          </div>
+          <h2 className="font-headline-lg text-3xl sm:text-4xl text-[#dee2f6] font-bold">Work Experience</h2>
         </div>
 
-        <div className="flex flex-col gap-14">
+        {/* Experience Cards */}
+        <div className="space-y-6">
           {EXPERIENCE_DATA.map((exp) => (
-            <div key={exp.id} className="px-4 sm:px-6 lg:px-10">
-              <div
-                className="flex flex-col gap-1 rounded-[18px] border border-slate-200/70 bg-[#eef2f7] px-6 py-6 shadow-xs sm:px-8 sm:py-7 lg:px-10 lg:py-8"
-              >
-                {/* Header Info */}
-                <div className="flex h-[100px] w-full flex-row justify-between border-slate-300/60 sm:items-center">
-                  <div>
-                    <h3 className="font-manrope text-xl font-black tracking-tight text-[#0f3276] sm:text-2xl">
-                      {exp.role}
-                    </h3>
-
-                    <div className="mt-4 flex items-center gap-2 text-xs font-bold text-[#009BFF] sm:text-sm">
-                      <Briefcase className="h-3.5 w-3.5 text-[#009BFF]" />
-                      <span>{exp.company}</span>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-row items-center justify-between gap-2 text-xs font-medium text-slate-500 sm:flex-col sm:items-end">
-                    <div className="flex items-center gap-1 rounded-full bg-white px-2.5 py-0.5 text-[10px] text-slate-700 sm:text-xs">
-                      <Calendar className="h-3 w-3 text-[#009BFF]" />
-                      <span>{exp.period}</span>
-                    </div>
-
-                    <div className="flex items-center gap-1 text-[10px] text-slate-500 sm:text-xs">
-                      <MapPin className="h-3 w-3" />
-                      <span>{exp.location}</span>
-                    </div>
+            <div key={exp.id} className="relative bg-[#161b2a] rounded-2xl p-6 sm:p-8 shadow-md border border-[#252a39]">
+              {/* Header Info */}
+              <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 pb-6 border-b border-[#252a39]">
+                <div className="space-y-1">
+                  <h3 className="font-headline-md text-xl sm:text-2xl font-bold text-[#4cd7f6]">{exp.role}</h3>
+                  <div className="flex flex-wrap items-center gap-2 text-[#bcc9cd] font-label-md text-label-md">
+                    <span className="material-symbols-outlined text-[18px] text-[#4cd7f6]">domain</span>
+                    <span className="text-[#dee2f6] font-semibold">{exp.company}</span>
+                    <span>•</span>
+                    <span className="material-symbols-outlined text-[16px]">location_on</span>
+                    <span>{exp.location}</span>
                   </div>
                 </div>
-
-                {/* Description */}
-                <p className="text-xs leading-relaxed text-slate-700">
-                  {exp.description}
-                </p>
-
-                {/* Bullet Achievements */}
-                {exp.bullets && (
-                  <ul className="list-outside list-disc space-y-1 ps-5 text-xs font-normal leading-relaxed text-slate-700">
-                    {exp.bullets.map((bullet, idx) => (
-                      <li key={idx}>{bullet}</li>
-                    ))}
-                  </ul>
-                )}
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#252a39] text-[#4cd7f6] font-label-md text-label-md shrink-0 self-start border border-[#3d494c]">
+                  <span className="material-symbols-outlined text-[16px]">calendar_today</span>
+                  <span>{exp.period}</span>
+                </div>
               </div>
+
+              {/* Description */}
+              <p className="font-body-md text-body-md text-[#bcc9cd] my-6 leading-relaxed">
+                {exp.description}
+              </p>
+
+              {/* Structured Highlights Grid */}
+              {exp.bullets && exp.bullets.length > 0 && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {exp.bullets.map((bullet, idx) => (
+                    <div key={idx} className="flex items-start gap-3 p-4 rounded-xl bg-[#1a1f2e] border border-[#252a39]">
+                      <span className="material-symbols-outlined text-[#4cd7f6] text-[20px] shrink-0 mt-0.5">
+                        {iconMap[idx % iconMap.length]}
+                      </span>
+                      <div className="flex flex-col">
+                        <span className="font-headline-sm text-sm font-semibold text-[#dee2f6] mb-1">
+                          {titleMap[idx % titleMap.length] || `Achievement ${idx + 1}`}
+                        </span>
+                        <span className="font-body-sm text-xs sm:text-sm text-[#bcc9cd] leading-normal">{bullet}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );

@@ -1,42 +1,61 @@
 import React from 'react';
 import { SKILLS_DATA } from '../data/portfolioData';
-import { RenderTechIcon } from './TechLogos';
 
 export default function SkillsSection({ onSelectSkill }) {
-  return (
-    <section id="skills" className="py-8 sm:py-10">
-      <div className="portfolio-container">
-        
-        {/* Section Title with Extension Line */}
-        <div className="flex items-center gap-3 mb-6 sm:mb-8">
-          <h2 className="text-xl sm:text-2xl font-black text-[#009BFF] whitespace-nowrap font-manrope">
-            Skills Acquired
-          </h2>
-          <div className="h-[2px] bg-[#009BFF] flex-1 hidden sm:block" />
-        </div>
+  // Map material icons and subtitles matching code.html
+  const skillDetailsMap = {
+    linux: { icon: 'terminal', subtitle: 'Core OS', colorClass: 'text-[#4cd7f6]' },
+    http: { icon: 'http', subtitle: 'Protocols', colorClass: 'text-[#4cd7f6]' },
+    css: { icon: 'css', subtitle: 'Flexbox & Grid', colorClass: 'text-[#4cd7f6]' },
+    bootstrap: { icon: 'view_quilt', subtitle: 'UI Framework', colorClass: 'text-[#b4c5ff]' },
+    html: { icon: 'html', subtitle: 'Semantic Web', colorClass: 'text-[#4cd7f6]' },
+    rest: { icon: 'api', subtitle: 'Architecture', colorClass: 'text-[#b4c5ff]' },
+    git: { icon: 'alt_route', subtitle: 'Version Control', colorClass: 'text-[#7bd0ff]' },
+    js: { icon: 'javascript', subtitle: 'ES6+ Async', colorClass: 'text-[#4cd7f6]' },
+    react: { icon: 'deployed_code', subtitle: 'Hooks & State', colorClass: 'text-[#4cd7f6]' },
+    node: { icon: 'dns', subtitle: 'Runtime', colorClass: 'text-[#b4c5ff]' },
+    express: { icon: 'route', subtitle: 'Middleware', colorClass: 'text-[#7bd0ff]' },
+    mongo: { icon: 'storage', subtitle: 'NoSQL DB', colorClass: 'text-[#4cd7f6]' },
+  };
 
-        {/* Clean Grid of Skill Cards (4 columns on mobile for tight phone layout) */}
-        <div className="grid grid-cols-4 sm:grid-cols-6 gap-3 sm:gap-6 justify-items-center">
-          {SKILLS_DATA.map((skill) => (
+  return (
+    <section className="scroll-mt-24 w-full py-16 sm:py-20 max-w-[1200px] mx-auto px-gutter" id="skills">
+      
+      {/* Section Header */}
+      <div className="flex flex-col space-y-2 mb-12">
+        <div className="flex items-center gap-2">
+          <span className="h-px w-8 bg-[#4cd7f6]" />
+          <span className="font-label-sm text-label-sm text-[#4cd7f6] uppercase tracking-widest">Technical Toolkit</span>
+        </div>
+        <h2 className="font-headline-lg text-3xl sm:text-4xl font-bold text-[#dee2f6]">Skills Acquired</h2>
+      </div>
+
+      {/* 12 Skill Cards Grid */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        {SKILLS_DATA.map((skill) => {
+          const detail = skillDetailsMap[skill.iconKey] || { icon: 'code', subtitle: skill.category, colorClass: 'text-[#4cd7f6]' };
+          return (
             <div
               key={skill.id}
               onClick={() => onSelectSkill && onSelectSkill(skill)}
-              className="flex flex-col items-center group cursor-pointer"
+              className="flex flex-col items-center justify-center p-5 rounded-xl bg-[#161b2a] hover:bg-[#1a1f2e] hover:-translate-y-1 transition-all duration-200 group cursor-pointer border border-[#252a39]"
             >
-              {/* Soft Blue Icon Box */}
-              <div className="w-13 h-13 sm:w-16 sm:h-16 rounded-[14px] bg-[#009BFF] shadow-xs flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
-                <RenderTechIcon iconName={skill.iconKey} className="w-6 h-6 sm:w-8 sm:h-8" />
+              <div className="w-12 h-12 rounded-lg bg-[#252a39] flex items-center justify-center group-hover:scale-110 transition-transform mb-3">
+                <span className={`material-symbols-outlined text-[28px] ${detail.colorClass}`}>
+                  {detail.icon}
+                </span>
               </div>
-
-              {/* Label Written Beneath */}
-              <span className="mt-1.5 text-[10px] sm:text-xs font-medium text-slate-800 text-center tracking-tight">
+              <span className="font-label-md text-label-md text-[#dee2f6] font-semibold text-center">
                 {skill.name}
               </span>
+              <span className="font-label-sm text-label-sm text-[#bcc9cd] mt-0.5 text-center">
+                {detail.subtitle}
+              </span>
             </div>
-          ))}
-        </div>
-
+          );
+        })}
       </div>
+
     </section>
   );
 }
