@@ -1,8 +1,9 @@
-from app.db.dependencies import get_db
-from sqlalchemy.ext.asyncio import AsyncSession
-from app.schemas.project import ProjectSchema 
-from app.models.project import Project
 from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
+
+from app.models.project import Project
+from app.schemas.project import ProjectSchema
+
 
 class ProjectService:
     @staticmethod
@@ -13,7 +14,9 @@ class ProjectService:
         return [ProjectSchema.model_validate(project) for project in projects]
 
     @staticmethod
-    async def add_project(session: AsyncSession, project_data: ProjectSchema) -> ProjectSchema | None:
+    async def add_project(
+        session: AsyncSession, project_data: ProjectSchema
+    ) -> ProjectSchema | None:
         """Add a new project to the database."""
         project = Project(**project_data.model_dump())
         session.add(project)

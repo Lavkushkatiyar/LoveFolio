@@ -1,5 +1,3 @@
-
-
 from sqlalchemy import select
 
 from app.models.skill import Skill
@@ -21,12 +19,11 @@ class SkillService:
         await session.commit()
         await session.refresh(skill)
         return skill
+
     @staticmethod
     async def delete_skill(session, skill_name: str) -> bool:
         """Delete a skill from the database."""
-        result = await session.execute(
-            select(Skill).where(Skill.name == skill_name)
-        )
+        result = await session.execute(select(Skill).where(Skill.name == skill_name))
 
         skill = result.scalars().first()
 

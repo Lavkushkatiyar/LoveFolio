@@ -9,10 +9,7 @@ from app.db.base import Base
 class Profile(Base):
     __tablename__ = "profiles"
 
-    id: Mapped[str] = mapped_column(String(36),
-        primary_key=True,
-        default=str(uuid4())
-    )
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=str(uuid4()))
 
     name: Mapped[str] = mapped_column(String(100))
     title: Mapped[str] = mapped_column(String(150))
@@ -29,10 +26,3 @@ class Profile(Base):
     verified_skills_count: Mapped[int] = mapped_column(Integer())
     professional_projects: Mapped[int] = mapped_column(Integer())
     dsa_solved_count: Mapped[str] = mapped_column(String(50))
-
-
-
-
-
-
-    

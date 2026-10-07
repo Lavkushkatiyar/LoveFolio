@@ -1,8 +1,8 @@
-
-from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
+
 from app.models.experience import Experience
-from app.schemas.experience import ExperienceResponse,ExperienceCreate
+from app.schemas.experience import ExperienceCreate, ExperienceResponse
 
 
 class ExperienceService:
@@ -10,10 +10,11 @@ class ExperienceService:
     async def get_experiences(
         session: AsyncSession,
     ) -> list[ExperienceResponse]:
-        result = await session.execute(
-            select(Experience))
-        return [ExperienceResponse.model_validate(experience) for experience in result.scalars().all()]
-        
+        result = await session.execute(select(Experience))
+        return [
+            ExperienceResponse.model_validate(experience)
+            for experience in result.scalars().all()
+        ]
 
     @staticmethod
     async def create_experience(

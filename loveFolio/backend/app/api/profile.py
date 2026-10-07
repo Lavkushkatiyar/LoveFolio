@@ -26,13 +26,14 @@ async def read_profile(
     return ProfileResponse.model_validate(profile)
 
 
-@router.patch("",response_model=ProfileResponse)
-async def update_profile(profile_data:ProfileUpdate, session:AsyncSession=Depends(get_db))->ProfileResponse:
-    profile = await ProfileService.update_profile(session,profile_data)
+@router.patch("", response_model=ProfileResponse)
+async def update_profile(
+    profile_data: ProfileUpdate, session: AsyncSession = Depends(get_db)
+) -> ProfileResponse:
+    profile = await ProfileService.update_profile(session, profile_data)
     if profile is None:
-        raise HTTPException(status_code = status.HTTP_404_NOT_FOUND,detail="profile not found")
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail="profile not found"
+        )
 
     return ProfileResponse.model_validate(profile)
-
-
-

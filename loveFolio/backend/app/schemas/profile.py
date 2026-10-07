@@ -4,7 +4,7 @@ from pydantic import BaseModel, ConfigDict
 class ProfileResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
-    name:str
+    name: str
     title: str
     subtitle: str
     avatar_url: str
@@ -16,7 +16,6 @@ class ProfileResponse(BaseModel):
     verified_skills_count: int
     professional_projects: int
     dsa_solved_count: str
-
 
 
 class ProfileUpdate(BaseModel):
@@ -32,5 +31,3 @@ class ProfileUpdate(BaseModel):
     verified_skills_count: int | None = None
     professional_projects: int | None = None
     dsa_solved_count: str | None = None
-
-    

@@ -8,6 +8,7 @@ class SkillCreate(BaseModel):
     iconKey: str
     category: str
 
+
 class SkillResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
@@ -15,5 +16,3 @@ class SkillResponse(BaseModel):
     name: str
     iconKey: str
     category: str
-
-    

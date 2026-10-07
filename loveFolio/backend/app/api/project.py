@@ -1,17 +1,18 @@
-from fastapi import  APIRouter ,Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db.dependencies import get_db
-from app.services.project import ProjectService
 from app.schemas.project import ProjectSchema
-
+from app.services.project import ProjectService
 
 router = APIRouter(prefix="/projects", tags=["Projects"])
+
 
 @router.get("/", response_model=list[ProjectSchema])
 async def get_all_projects(session: AsyncSession = Depends(get_db)):
     """Get all projects from the database."""
     return await ProjectService.get_all_projects(session)
+
 
 @router.post("/", response_model=ProjectSchema)
 async def add_project(
@@ -23,6 +24,7 @@ async def add_project(
     if not project:
         raise HTTPException(status_code=400, detail="Project could not be added.")
     return project
+
 
 @router.delete("/{project_name}", response_model=dict)
 async def delete_project(
