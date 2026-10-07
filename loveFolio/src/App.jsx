@@ -26,11 +26,11 @@ export default function App() {
   }, [activeSkill, activeProject]);
 
   return (
-    <div className="min-h-screen bg-[#0e1321] font-body-md text-[#dee2f6] selection:bg-[#06b6d4] selection:text-[#003640]">
+    <div className="min-h-screen bg-white font-body-md text-[#111827] selection:bg-[#e5e7eb] selection:text-[#111827]">
       <Navbar />
 
-      <main className="w-full bg-[#0e1321] pt-20">
-        <div className="flex w-full flex-col text-[#dee2f6]">
+      <main className="w-full bg-white pt-20">
+        <div className="flex w-full flex-col text-[#111827]">
           <Hero />
           <ExperienceSection />
           <SkillsSection onSelectSkill={setActiveSkill} />

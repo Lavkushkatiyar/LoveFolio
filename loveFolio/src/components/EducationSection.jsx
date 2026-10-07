@@ -18,9 +18,9 @@ export default function EducationSection() {
       <div className="flex flex-col space-y-2 mb-12">
         <div className="flex items-center gap-2">
           <span className="h-px w-8 bg-[#4cd7f6]" />
-          <span className="font-label-sm text-label-sm text-[#4cd7f6] uppercase tracking-widest">Academic Foundation</span>
+          <span className="font-label-sm text-label-sm text-[#4cd7f6]">Education</span>
         </div>
-        <h2 className="font-headline-lg text-3xl sm:text-4xl font-bold text-[#dee2f6]">Education &amp; Credentials</h2>
+        <h2 className="font-headline-lg text-3xl sm:text-4xl font-semibold text-[#dee2f6]">Education</h2>
       </div>
 
       {/* Education Card */}

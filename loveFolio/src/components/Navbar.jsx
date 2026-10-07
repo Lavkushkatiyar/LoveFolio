@@ -18,8 +18,8 @@ export default function Navbar() {
         
         {/* Brand */}
         <a href="#top" className="flex items-center gap-3 group" aria-label="Go to top">
-          <div className="w-9 h-9 rounded-lg bg-[#252a39] flex items-center justify-center group-hover:bg-[#06b6d4] transition-colors">
-            <span className="font-label-lg text-label-lg text-[#4cd7f6] group-hover:text-[#003640] font-bold">LK</span>
+          <div className="w-9 h-9 rounded-lg border border-[#e5e7eb] bg-white flex items-center justify-center">
+            <span className="font-body-sm text-body-sm text-[#111827] font-medium">LK</span>
           </div>
           <div className="flex flex-col">
             <span className="font-headline-sm text-headline-sm text-[#dee2f6] leading-none">{PROFILE_DATA.name}</span>
@@ -44,7 +44,7 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <a
             href="#contact"
-            className="px-4 py-2 rounded-lg bg-[#0053db] text-[#cdd7ff] hover:bg-[#06b6d4] hover:text-[#003640] font-label-md text-label-md transition-all shadow-[0_0_20px_rgba(6,182,212,0.15)] flex items-center gap-1.5"
+            className="shrink-0 whitespace-nowrap px-4 py-2 rounded-lg bg-[#2563eb] text-white hover:bg-[#1d4ed8] font-body-sm text-body-sm transition-colors flex items-center gap-1.5"
           >
             <span>Let's Talk</span>
             <span className="material-symbols-outlined text-[16px]">arrow_outward</span>
@@ -66,7 +66,7 @@ export default function Navbar() {
 
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#161b2a] border-b border-[#252a39] px- gutter py-4 animate-fade-in space-y-2">
+        <div className="lg:hidden bg-white border-b border-[#e5e7eb] px-gutter py-4 animate-fade-in space-y-2">
           <nav className="flex flex-col space-y-1">
             {navLinks.map((link) => (
               <a

@@ -6,22 +6,22 @@ export default function ExperienceSection() {
   const titleMap = ['REST API Architecture', 'Frontend Performance', 'Schema & Validations', 'Testing & Reliability'];
 
   return (
-    <section className="scroll-mt-24 w-full bg-[#090e1c] py-16 sm:py-20" id="experience">
+    <section className="scroll-mt-24 w-full bg-[#090e1c] py-12 sm:py-16 border-b border-[#e5e7eb]" id="experience">
       <div className="max-w-[1200px] mx-auto px-gutter space-y-8">
         
         {/* Section Title Header */}
         <div className="flex flex-col space-y-2">
           <div className="flex items-center gap-2">
             <span className="h-px w-8 bg-[#4cd7f6]" />
-            <span className="font-label-sm text-label-sm text-[#4cd7f6] uppercase tracking-widest">Career Path</span>
+            <span className="font-label-sm text-label-sm text-[#4cd7f6]">Experience</span>
           </div>
-          <h2 className="font-headline-lg text-3xl sm:text-4xl text-[#dee2f6] font-bold">Work Experience</h2>
+          <h2 className="font-headline-lg text-3xl sm:text-4xl text-[#dee2f6] font-semibold">Work Experience</h2>
         </div>
 
         {/* Experience Cards */}
         <div className="space-y-6">
           {EXPERIENCE_DATA.map((exp) => (
-            <div key={exp.id} className="relative bg-[#161b2a] rounded-2xl p-6 sm:p-8 shadow-md border border-[#252a39]">
+            <div key={exp.id} className="relative bg-[#161b2a] rounded-2xl p-6 sm:p-8 shadow-md border border-[#d1d5db]">
               {/* Header Info */}
               <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 pb-6 border-b border-[#252a39]">
                 <div className="space-y-1">

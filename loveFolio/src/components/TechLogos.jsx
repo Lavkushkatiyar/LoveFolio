@@ -81,8 +81,7 @@ export function GitLogo({ className = "w-8 h-8" }) {
 export function ExpressLogo({ className = "w-8 h-8" }) {
   return (
     <svg className={className} viewBox="0 0 128 128" fill="none">
-      <rect width="128" height="128" rx="16" fill="#1e293b"/>
-      <text x="64" y="78" textAnchor="middle" fill="#ffffff" fontSize="42" fontWeight="800" fontFamily="sans-serif">ex</text>
+      <text x="64" y="82" textAnchor="middle" fill="#222222" fontSize="54" fontWeight="500" fontFamily="Arial, sans-serif" letterSpacing="-4">ex</text>
     </svg>
   );
 }
@@ -90,8 +89,7 @@ export function ExpressLogo({ className = "w-8 h-8" }) {
 export function RestLogo({ className = "w-8 h-8" }) {
   return (
     <svg className={className} viewBox="0 0 128 128" fill="none">
-      <rect width="128" height="128" rx="16" fill="#2563eb"/>
-      <text x="64" y="76" textAnchor="middle" fill="#ffffff" fontSize="34" fontWeight="800" fontFamily="monospace">{`{...}`}</text>
+      <path d="M40 40H27v48h13M88 40h13v48H88M75 32 53 96" stroke="#374151" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   );
 }
@@ -99,12 +97,15 @@ export function RestLogo({ className = "w-8 h-8" }) {
 export function LinuxLogo({ className = "w-8 h-8" }) {
   return (
     <svg className={className} viewBox="0 0 128 128" fill="none">
-      <rect width="128" height="128" rx="16" fill="#3b82f6"/>
-      <circle cx="64" cy="50" r="18" fill="#ffffff"/>
-      <circle cx="58" cy="46" r="3" fill="#000000"/>
-      <circle cx="70" cy="46" r="3" fill="#000000"/>
-      <polygon points="64,54 58,60 70,60" fill="#f59e0b"/>
-      <path d="M40 100c0-20 10-30 24-30s24 10 24 30H40z" fill="#ffffff"/>
+      <ellipse cx="64" cy="75" rx="34" ry="43" fill="#222222"/>
+      <ellipse cx="64" cy="82" rx="21" ry="31" fill="#ffffff"/>
+      <circle cx="64" cy="38" r="24" fill="#222222"/>
+      <ellipse cx="55" cy="40" rx="6" ry="9" fill="#ffffff"/>
+      <ellipse cx="73" cy="40" rx="6" ry="9" fill="#ffffff"/>
+      <circle cx="56" cy="42" r="2.5" fill="#222222"/>
+      <circle cx="72" cy="42" r="2.5" fill="#222222"/>
+      <path d="m57 51 7-4 7 4-7 7-7-7Z" fill="#f2a900"/>
+      <path d="M43 111c-12 4-22 2-24-3-1-5 9-9 22-10l8 5-6 8ZM85 103c13 1 23 5 22 10-1 5-12 7-24 3l-6-8 8-5Z" fill="#f2a900"/>
     </svg>
   );
 }
@@ -112,8 +113,8 @@ export function LinuxLogo({ className = "w-8 h-8" }) {
 export function HttpLogo({ className = "w-8 h-8" }) {
   return (
     <svg className={className} viewBox="0 0 128 128" fill="none">
-      <rect width="128" height="128" rx="16" fill="#3b82f6"/>
-      <text x="64" y="74" textAnchor="middle" fill="#ffffff" fontSize="24" fontWeight="800" fontFamily="sans-serif">http://</text>
+      <circle cx="64" cy="64" r="43" stroke="#2563eb" strokeWidth="7"/>
+      <path d="M21 64h86M64 21c13 12 19 26 19 43s-6 31-19 43M64 21C51 33 45 47 45 64s6 31 19 43" stroke="#2563eb" strokeWidth="6" strokeLinecap="round"/>
     </svg>
   );
 }

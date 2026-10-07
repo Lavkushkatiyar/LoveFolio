@@ -20,17 +20,11 @@ export default function ContactSection() {
       <div className="max-w-[1200px] mx-auto px-gutter space-y-8">
         
         {/* Direct Banner Card matching code.html */}
-        <div className="relative rounded-3xl bg-gradient-to-r from-[#1a1f2e] via-[#252a39] to-[#1a1f2e] p-8 sm:p-12 overflow-hidden shadow-xl border border-[#252a39]">
-          <div className="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-[#06b6d4]/15 blur-3xl pointer-events-none" />
-
+        <div className="relative rounded-3xl bg-white p-8 sm:p-12 overflow-hidden border border-[#e5e7eb]">
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
             {/* Left Column Text */}
             <div className="lg:col-span-7 space-y-4 text-left">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#090e1c] text-[#4cd7f6] font-label-sm text-label-sm border border-[#252a39]">
-                <span className="w-2 h-2 rounded-full bg-[#4cd7f6]" />
-                <span>Open to Conversations</span>
-              </div>
               <h2 className="font-display text-3xl sm:text-5xl font-bold text-[#dee2f6]">
                 Let’s Build Something Resilient Together.
               </h2>

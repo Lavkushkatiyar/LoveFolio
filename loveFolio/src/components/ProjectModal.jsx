@@ -49,11 +49,11 @@ export default function ProjectModal({ project, onClose }) {
         </div>
 
         {/* Image Preview Banner */}
-        <div className="rounded-xl bg-[#1a1f2e] p-2 mb-6 border border-[#252a39] overflow-hidden">
+        <div className="mb-6">
           <img
             src={project.featuredImage}
             alt={project.title}
-            className="w-full h-48 sm:h-64 object-cover rounded-lg"
+            className="block w-full h-auto object-contain rounded-lg"
             onError={(e) => {
               e.target.style.display = 'none';
             }}
@@ -96,7 +96,7 @@ export default function ProjectModal({ project, onClose }) {
             <div>
               <h4 className="font-label-sm text-label-sm text-[#4cd7f6] uppercase tracking-wider mb-3 flex items-center gap-1.5">
                 <span className="material-symbols-outlined text-[18px]">layers</span>
-                <span>Verified Crio Modules Completed</span>
+                <span>Completed Modules</span>
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {project.completedModules.map((module, idx) => (

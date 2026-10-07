@@ -15,9 +15,9 @@ export default function ProjectsSection({ onSelectProject }) {
         <div className="flex flex-col space-y-2 mb-12">
           <div className="flex items-center gap-2">
             <span className="h-px w-8 bg-[#4cd7f6]" />
-            <span className="font-label-sm text-label-sm text-[#4cd7f6] uppercase tracking-widest">Case Studies</span>
+            <span className="font-label-sm text-label-sm text-[#4cd7f6]">Selected work</span>
           </div>
-          <h2 className="font-headline-lg text-3xl sm:text-4xl font-bold text-[#dee2f6]">Featured Projects</h2>
+          <h2 className="font-headline-lg text-3xl sm:text-4xl font-semibold text-[#dee2f6]">Projects</h2>
         </div>
 
         {/* Project Cards List */}
@@ -94,20 +94,19 @@ export default function ProjectsSection({ onSelectProject }) {
                   </div>
                 </div>
 
-                {/* Visual Image Preview Frame */}
+                {/* Project image */}
                 <div
                   onClick={() => onSelectProject && onSelectProject(project)}
-                  className="w-full lg:w-96 h-60 rounded-xl overflow-hidden bg-[#1a1f2e] relative shrink-0 shadow-inner group cursor-pointer border border-[#252a39]"
+                  className="w-full lg:w-96 shrink-0 group cursor-pointer"
                 >
                   <img
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="block w-full h-auto rounded-lg object-contain transition-opacity duration-200 group-hover:opacity-90"
                     src={project.featuredImage}
                     alt={project.title}
                     onError={(e) => {
                       e.target.style.display = 'none';
                     }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#161b2a] via-transparent to-transparent opacity-80" />
                 </div>
               </div>
             );

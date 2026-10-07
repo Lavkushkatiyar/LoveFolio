@@ -65,16 +65,11 @@ export default function SkillModal({ skill, onClose }) {
               <h3 className="font-headline-md text-2xl font-bold text-[#dee2f6]">
                 {skill.name}
               </h3>
-              <span className="material-symbols-outlined text-[#4cd7f6] text-[20px]">verified</span>
             </div>
 
             <div className="flex items-center gap-2 mt-1">
               <span className="font-label-sm text-label-sm px-2.5 py-0.5 rounded bg-[#252a39] text-[#4cd7f6] border border-[#3d494c]">
                 {skill.category}
-              </span>
-              <span className="font-label-sm text-label-sm text-[#bcc9cd] flex items-center gap-1">
-                <span className="material-symbols-outlined text-[14px]">workspace_premium</span>
-                <span>Verified Competency</span>
               </span>
             </div>
           </div>
