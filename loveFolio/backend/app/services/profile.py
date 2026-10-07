@@ -1,10 +1,10 @@
-from dataclasses import field
 
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models.profile import Profile
 from app.schemas.profile import ProfileUpdate
+
 
 class ProfileService:
     @staticmethod

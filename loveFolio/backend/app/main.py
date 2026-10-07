@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.profile import router as profile_router
+from app.api.skill import router as skill_router
 
 app = FastAPI(name="backend")
 
@@ -16,6 +17,7 @@ app.add_middleware(
 )
 
 app.include_router(profile_router)
+app.include_router(skill_router, tags=["Skills"])
 
 
 @app.get("/")

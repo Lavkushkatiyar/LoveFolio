@@ -1,0 +1,24 @@
+from fastapi import APIRouter, Depends, HTTPException
+from sqlalchemy.orm import Session
+
+from app.db.dependencies import get_db
+from app.schemas.skill import SkillResponse ,SkillCreate
+from app.services.skill import SkillService
+from app.db.session import AsyncSession
+
+router = APIRouter(tags=["Skills"], prefix="/skills")
+
+@router.get("/", response_model=list[SkillResponse])
+async def get_all_skills(session: Session = Depends(get_db)):
+    return await SkillService.get_all_skills(session)
+
+@router.post("", response_model=SkillResponse)
+async def create_skill(
+    skill_data: SkillCreate,
+    session: AsyncSession = Depends(get_db),
+) -> SkillResponse:
+    print(f"Adding skill: {skill_data}")
+    skill = await SkillService.add_skill(session, skill_data)
+    if not skill:
+        raise HTTPException(status_code=400, detail="Skill could not be added.")
+    return skill
