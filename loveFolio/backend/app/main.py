@@ -3,7 +3,6 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.profile import router as profile_router
 
-
 app = FastAPI(name="backend")
 
 app.add_middleware(
