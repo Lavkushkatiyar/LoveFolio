@@ -2,9 +2,9 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
 from app.db.dependencies import get_db
-from app.schemas.skill import SkillResponse ,SkillCreate
-from app.services.skill import SkillService
 from app.db.session import AsyncSession
+from app.schemas.skill import SkillCreate, SkillResponse
+from app.services.skill import SkillService
 
 router = APIRouter(tags=["Skills"], prefix="/skills")
 
@@ -21,4 +21,4 @@ async def create_skill(
     skill = await SkillService.add_skill(session, skill_data)
     if not skill:
         raise HTTPException(status_code=400, detail="Skill could not be added.")
-    return skill
+    return skill # type: ignore
