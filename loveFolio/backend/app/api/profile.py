@@ -5,10 +5,7 @@ from app.db.dependencies import get_db
 from app.schemas.profile import ProfileResponse, ProfileUpdate
 from app.services.profile import ProfileService
 
-router = APIRouter(
-    prefix="/profile",
-    tags=["Profile"],
-)
+router = APIRouter(prefix="/profile", tags=["Profiles"])
 
 
 @router.get(

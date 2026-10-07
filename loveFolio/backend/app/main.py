@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.profile import router as profile_router
 from app.api.skill import router as skill_router
+from app.api.experience import router as experience_router
 
 app = FastAPI(name="backend")
 
@@ -16,9 +17,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(profile_router)
+app.include_router(profile_router,tags=["Profiles"])
 app.include_router(skill_router, tags=["Skills"])
-
+app.include_router(experience_router, tags=["Experiences"])
 
 @app.get("/")
 def read_root():
