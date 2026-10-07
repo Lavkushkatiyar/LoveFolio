@@ -22,3 +22,13 @@ async def create_skill(
     if not skill:
         raise HTTPException(status_code=400, detail="Skill could not be added.")
     return skill # type: ignore
+@router.delete("/{skill_name}", response_model=dict)
+async def delete_skill(
+    skill_name: str,
+    session: AsyncSession = Depends(get_db),
+) -> dict:
+    print(f"Deleting skill: {skill_name}")
+    success = await SkillService.delete_skill(session, skill_name)
+    if not success:
+        raise HTTPException(status_code=404, detail="Skill not found.")
+    return {"message": "Skill deleted successfully."}
