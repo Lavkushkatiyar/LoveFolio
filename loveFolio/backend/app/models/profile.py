@@ -29,3 +29,10 @@ class Profile(Base):
     verified_skills_count: Mapped[int] = mapped_column(Integer())
     professional_projects: Mapped[int] = mapped_column(Integer())
     dsa_solved_count: Mapped[str] = mapped_column(String(50))
+
+
+
+
+
+
+    
