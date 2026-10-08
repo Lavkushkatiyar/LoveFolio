@@ -43,7 +43,7 @@ export default function Navbar() {
         {/* Action Buttons */}
         <div className="flex items-center gap-3">
           <a
-            href="/Lavkush-Katiyar-CV.pdf"
+            href="/Lavkush_Katiyar_CV.pdf"
             download
             className="shrink-0 whitespace-nowrap px-4 py-2 rounded-lg bg-[#2563eb] text-white hover:bg-[#1d4ed8] font-body-sm text-body-sm transition-colors flex items-center gap-1.5"
           >
