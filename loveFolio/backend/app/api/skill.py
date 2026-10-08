@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException
+from app.api.dependencies import require_admin
 from sqlalchemy.orm import Session
 
 from app.db.dependencies import get_db
@@ -14,7 +15,7 @@ async def get_all_skills(session: Session = Depends(get_db)):
     return await SkillService.get_all_skills(session)
 
 
-@router.post("", response_model=SkillResponse)
+@router.post("", dependencies=[Depends(require_admin)], response_model=SkillResponse)
 async def create_skill(
     skill_data: SkillCreate,
     session: AsyncSession = Depends(get_db),
@@ -26,7 +27,7 @@ async def create_skill(
     return skill  # type: ignore
 
 
-@router.delete("/{skill_name}", response_model=dict)
+@router.delete("/{skill_name}", dependencies=[Depends(require_admin)], response_model=dict)
 async def delete_skill(
     skill_name: str,
     session: AsyncSession = Depends(get_db),

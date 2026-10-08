@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
+from app.api.dependencies import require_admin
 
 from app.db.dependencies import get_db
 from app.schemas.education import EducationSchema
@@ -14,7 +15,7 @@ async def get_all_educations(session: AsyncSession = Depends(get_db)):
     return await EducationService.get_all_education(session)
 
 
-@router.post("", response_model=EducationSchema)
+@router.post("", dependencies=[Depends(require_admin)], response_model=EducationSchema)
 async def create_education(
     education_data: EducationSchema,
     session: AsyncSession = Depends(get_db),
@@ -27,7 +28,7 @@ async def create_education(
     return education
 
 
-@router.delete("/{institution}", response_model=dict)
+@router.delete("/{institution}", dependencies=[Depends(require_admin)], response_model=dict)
 async def delete_education(
     institution: str,
     session: AsyncSession = Depends(get_db),

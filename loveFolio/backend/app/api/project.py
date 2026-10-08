@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException
+from app.api.dependencies import require_admin
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db.dependencies import get_db
@@ -14,7 +15,7 @@ async def get_all_projects(session: AsyncSession = Depends(get_db)):
     return await ProjectService.get_all_projects(session)
 
 
-@router.post("/", response_model=ProjectSchema)
+@router.post("/", dependencies=[Depends(require_admin)], response_model=ProjectSchema)
 async def add_project(
     project_data: ProjectSchema,
     session: AsyncSession = Depends(get_db),
@@ -26,7 +27,7 @@ async def add_project(
     return project
 
 
-@router.delete("/{project_name}", response_model=dict)
+@router.delete("/{project_name}", dependencies=[Depends(require_admin)], response_model=dict)
 async def delete_project(
     project_name: str,
     session: AsyncSession = Depends(get_db),

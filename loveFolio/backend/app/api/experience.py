@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
+from app.api.dependencies import require_admin
 
 from app.db.dependencies import get_db
 from app.schemas.experience import ExperienceCreate, ExperienceResponse
@@ -15,7 +16,7 @@ async def get_experiences(
     return await ExperienceService.get_experiences(session)
 
 
-@router.post("", response_model=ExperienceResponse)
+@router.post("", dependencies=[Depends(require_admin)], response_model=ExperienceResponse)
 async def create_experience(
     experience_data: ExperienceCreate,
     session: AsyncSession = Depends(get_db),
@@ -23,7 +24,7 @@ async def create_experience(
     return await ExperienceService.create_experience(session, experience_data)
 
 
-@router.delete("/{experience_id}", response_model=dict)
+@router.delete("/{experience_id}", dependencies=[Depends(require_admin)], response_model=dict)
 async def delete_experience(
     experience_id: str,
     session: AsyncSession = Depends(get_db),

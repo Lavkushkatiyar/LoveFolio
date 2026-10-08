@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
+from app.api.dependencies import require_admin
 
 from app.db.dependencies import get_db
 from app.schemas.profile import ProfileResponse, ProfileUpdate
@@ -26,7 +27,7 @@ async def read_profile(
     return ProfileResponse.model_validate(profile)
 
 
-@router.patch("", response_model=ProfileResponse)
+@router.patch("", dependencies=[Depends(require_admin)], response_model=ProfileResponse)
 async def update_profile(
     profile_data: ProfileUpdate, session: AsyncSession = Depends(get_db)
 ) -> ProfileResponse:
