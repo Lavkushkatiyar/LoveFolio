@@ -1,12 +1,13 @@
+
 from sqlalchemy import String
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db.base import Base
-
+from uuid import uuid4
 
 class Education(Base):
     __tablename__ = "education"
-    id: Mapped[str] = mapped_column(String, primary_key=True, index=True)
+    id: Mapped[str] = mapped_column(String, primary_key=True, index=True,default=lambda: str(uuid4()))
     degree: Mapped[str] = mapped_column(String)
     institution: Mapped[str] = mapped_column(String)
     period: Mapped[str] = mapped_column(String)

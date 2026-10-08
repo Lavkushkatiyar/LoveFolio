@@ -1,10 +1,12 @@
+import uuid
+
 from pydantic import BaseModel, ConfigDict
 
 
 class ProjectSchema(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
-    id: int
+    id: uuid.UUID| None = None
     title: str
     category: str
     date: str

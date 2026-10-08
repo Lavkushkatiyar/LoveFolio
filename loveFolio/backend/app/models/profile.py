@@ -4,12 +4,12 @@ from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy.types import Integer, String, Text
 
 from app.db.base import Base
-
+import uuid
 
 class Profile(Base):
     __tablename__ = "profiles"
 
-    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=str(uuid4()))
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=lambda: str(uuid4()))
 
     name: Mapped[str] = mapped_column(String(100))
     title: Mapped[str] = mapped_column(String(150))

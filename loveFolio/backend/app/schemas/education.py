@@ -1,9 +1,9 @@
 from pydantic import BaseModel, ConfigDict
-
+import uuid
 
 class EducationSchema(BaseModel):
     model_config = ConfigDict(from_attributes=True)
-    id: str
+    id: uuid.UUID| None = None
     degree: str
     institution: str
     period: str

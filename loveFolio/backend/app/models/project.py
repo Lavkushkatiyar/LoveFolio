@@ -1,8 +1,9 @@
 from uuid import uuid4
+import uuid
 
 from sqlalchemy import JSON
 from sqlalchemy.orm import Mapped, mapped_column
-from sqlalchemy.types import Integer, String, Text
+from sqlalchemy.types import  String, Text
 
 from app.db.base import Base
 
@@ -11,7 +12,7 @@ class Project(Base):
     __tablename__ = "projects"
 
     id: Mapped[str] = mapped_column(
-        Integer, primary_key=True, index=True, default=uuid4
+        String(36), primary_key=True, index=True, default=lambda: str(uuid4())
     )
     title: Mapped[str] = mapped_column(String(200), nullable=False)
     category: Mapped[str] = mapped_column(String(100), nullable=False)
