@@ -1,4 +1,21 @@
-import React from 'react';
+import {
+  BrainCircuit,
+  Bot,
+  CircleDot,
+  Container,
+  Database,
+  FileCode2,
+  FlaskConical,
+  Flower2,
+  KeyRound,
+  Layers,
+  Network,
+  Server,
+  ShieldCheck,
+  Wind,
+  Waypoints,
+  Zap,
+} from 'lucide-react';
 
 export function NodeLogo({ className = "w-8 h-8" }) {
   return (
@@ -120,19 +137,56 @@ export function HttpLogo({ className = "w-8 h-8" }) {
 }
 
 export function RenderTechIcon({ iconName, className = "w-10 h-10" }) {
-  switch (iconName) {
-    case 'node': return <NodeLogo className={className} />;
+  const key = iconName?.toLowerCase().replace(/[^a-z0-9]/g, '');
+
+  switch (key) {
+    case 'alembic': return <FlaskConical className={className} color="#d6a2e8" />;
+    case 'css':
+    case 'css3': return <CSSLogo className={className} />;
+    case 'celery': return <Flower2 className={className} color="#37814a" />;
+    case 'deno': return <CircleDot className={className} color="#252a39" />;
+    case 'docker': return <Container className={className} color="#2496ed" />;
+    case 'fastapi': return <Zap className={className} color="#009688" />;
+    case 'git': return <GitLogo className={className} />;
+    case 'html':
+    case 'html5': return <HTMLLogo className={className} />;
+    case 'jwt': return <KeyRound className={className} color="#d6b65b" />;
+    case 'js':
+    case 'javascript': return <JSLogo className={className} />;
+    case 'llm': return <BrainCircuit className={className} color="#b18cff" />;
+    case 'node':
+    case 'nodejs': return <NodeLogo className={className} />;
+    case 'ollama': return <Bot className={className} color="#252a39" />;
+    case 'openrouter': return <Waypoints className={className} color="#ff8a65" />;
+    case 'postgresql': return <Database className={className} color="#699eca" />;
+    case 'pydantic': return <ShieldCheck className={className} color="#e5a04b" />;
+    case 'python': return <FileCode2 className={className} color="#ffd43b" />;
+    case 'rag': return <Network className={className} color="#a78bfa" />;
+    case 'rest':
+    case 'restapi': return <RestLogo className={className} />;
     case 'react': return <ReactLogo className={className} />;
-    case 'js': return <JSLogo className={className} />;
-    case 'html': return <HTMLLogo className={className} />;
-    case 'css': return <CSSLogo className={className} />;
+    case 'redis': return <Server className={className} color="#d82c20" />;
+    case 'sqlalchemy': return <Layers className={className} color="#cf4b32" />;
+    case 'tailwind':
+    case 'tailwindcss': return <Wind className={className} color="#38bdf8" />;
     case 'bootstrap': return <BootstrapLogo className={className} />;
     case 'mongo': return <MongoLogo className={className} />;
-    case 'git': return <GitLogo className={className} />;
     case 'express': return <ExpressLogo className={className} />;
-    case 'rest': return <RestLogo className={className} />;
     case 'linux': return <LinuxLogo className={className} />;
     case 'http': return <HttpLogo className={className} />;
-    default: return <ReactLogo className={className} />;
+    default: {
+      const name = iconName || '?';
+      const initials = name.replace(/[^a-z0-9]/gi, '').slice(0, 2).toUpperCase() || '?';
+      const hue = [...name].reduce((value, character) => value + character.charCodeAt(0), 0) % 360;
+      return (
+        <span
+          className={`${className} inline-flex items-center justify-center rounded-md font-bold`}
+          style={{ color: `hsl(${hue} 75% 70%)` }}
+          aria-label={`${name} icon`}
+        >
+          {initials}
+        </span>
+      );
+    }
   }
 }

@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { PROJECTS_DATA } from '../data/portfolioData';
+import { RenderTechIcon } from './TechLogos';
 
 export default function SkillModal({ skill, onClose }) {
   useEffect(() => {
@@ -13,21 +14,21 @@ export default function SkillModal({ skill, onClose }) {
   if (!skill) return null;
 
   const skillDetailsMap = {
-    linux: { icon: 'terminal', subtitle: 'Core OS', colorClass: 'text-[#4cd7f6]' },
-    http: { icon: 'http', subtitle: 'Protocols', colorClass: 'text-[#4cd7f6]' },
-    css: { icon: 'css', subtitle: 'Flexbox & Grid', colorClass: 'text-[#4cd7f6]' },
-    bootstrap: { icon: 'view_quilt', subtitle: 'UI Framework', colorClass: 'text-[#b4c5ff]' },
-    html: { icon: 'html', subtitle: 'Semantic Web', colorClass: 'text-[#4cd7f6]' },
-    rest: { icon: 'api', subtitle: 'Architecture', colorClass: 'text-[#b4c5ff]' },
-    git: { icon: 'alt_route', subtitle: 'Version Control', colorClass: 'text-[#7bd0ff]' },
-    js: { icon: 'javascript', subtitle: 'ES6+ Async', colorClass: 'text-[#4cd7f6]' },
-    react: { icon: 'deployed_code', subtitle: 'Hooks & State', colorClass: 'text-[#4cd7f6]' },
-    node: { icon: 'dns', subtitle: 'Runtime', colorClass: 'text-[#b4c5ff]' },
-    express: { icon: 'route', subtitle: 'Middleware', colorClass: 'text-[#7bd0ff]' },
-    mongo: { icon: 'storage', subtitle: 'NoSQL DB', colorClass: 'text-[#4cd7f6]' },
+    linux: { subtitle: 'Core OS' },
+    http: { subtitle: 'Protocols' },
+    css: { subtitle: 'Flexbox & Grid' },
+    bootstrap: { subtitle: 'UI Framework' },
+    html: { subtitle: 'Semantic Web' },
+    rest: { subtitle: 'Architecture' },
+    git: { subtitle: 'Version Control' },
+    js: { subtitle: 'ES6+ Async' },
+    react: { subtitle: 'Hooks & State' },
+    node: { subtitle: 'Runtime' },
+    express: { subtitle: 'Middleware' },
+    mongo: { subtitle: 'NoSQL DB' },
   };
 
-  const detail = skillDetailsMap[skill.iconKey] || { icon: 'code', subtitle: skill.category, colorClass: 'text-[#4cd7f6]' };
+  const detail = skillDetailsMap[skill.iconKey] || { subtitle: skill.category };
 
   const projectsUsed = PROJECTS_DATA.filter((p) =>
     p.tech_stac.some(
@@ -55,9 +56,7 @@ export default function SkillModal({ skill, onClose }) {
         {/* Modal Header */}
         <div className="flex items-center gap-4 mb-6 pt-2">
           <div className="w-14 h-14 rounded-xl bg-[#252a39] flex items-center justify-center shrink-0 border border-[#3d494c]">
-            <span className={`material-symbols-outlined text-[32px] ${detail.colorClass}`}>
-              {detail.icon}
-            </span>
+            <RenderTechIcon iconName={skill.iconKey} className="w-9 h-9" />
           </div>
 
           <div>
