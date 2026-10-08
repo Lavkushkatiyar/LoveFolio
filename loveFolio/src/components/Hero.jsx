@@ -2,7 +2,8 @@ import React from 'react';
 import { PROFILE_DATA } from '../data/portfolioData';
 
 export default function Hero() {
-  return (
+  return ( 
+   
     <section className="relative w-full max-w-[1200px] mx-auto px-gutter pt-8 pb-12 md:py-16 border-b border-[#e5e7eb]" id="top">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         

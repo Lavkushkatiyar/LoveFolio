@@ -30,7 +30,7 @@ export default function SkillModal({ skill, onClose }) {
   const detail = skillDetailsMap[skill.iconKey] || { icon: 'code', subtitle: skill.category, colorClass: 'text-[#4cd7f6]' };
 
   const projectsUsed = PROJECTS_DATA.filter((p) =>
-    p.techStack.some(
+    p.tech_stac.some(
       (t) =>
         t.toLowerCase().includes(skill.name.toLowerCase()) ||
         skill.name.toLowerCase().includes(t.toLowerCase())

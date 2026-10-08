@@ -60,7 +60,7 @@ export default function ProjectsSection({ onSelectProject }) {
 
                   {/* Technology Pills */}
                   <div className="flex flex-wrap gap-2 pt-2">
-                    {project.techStack.map((tech) => (
+                    {project.tech_stack.map((tech) => (
                       <span
                         key={tech}
                         className="px-2.5 py-1 rounded-md bg-[#1a1f2e] text-[#4cd7f6] font-label-sm text-label-sm border border-[#252a39]"
