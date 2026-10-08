@@ -99,9 +99,11 @@ export default function ProjectsSection({ onSelectProject }) {
                   onClick={() => onSelectProject && onSelectProject(project)}
                   className="w-full lg:w-96 shrink-0 group cursor-pointer"
                 >
+                     {console.log(project.featured_image_url)}
                   <img
                     className="block w-full h-auto rounded-lg object-contain transition-opacity duration-200 group-hover:opacity-90"
-                    src={project.featuredImage}
+                    src={project.featured_image_url}
+                 
                     alt={project.title}
                     onError={(e) => {
                       e.target.style.display = 'none';
