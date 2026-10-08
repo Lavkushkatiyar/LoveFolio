@@ -75,7 +75,8 @@ export default function ProjectsSection({ onSelectProject }) {
                     {project.demoUrl && (
                       <a
                         className="px-4 py-2 rounded-lg bg-[#06b6d4] text-[#003640] font-label-md text-label-md font-semibold hover:opacity-90 transition-all flex items-center gap-1.5 shadow-md shadow-[#06b6d4]/10"
-                        href={project.demoUrl}
+                        href={project.github_url}
+                        
                         target="_blank"
                         rel="noreferrer"
                       >

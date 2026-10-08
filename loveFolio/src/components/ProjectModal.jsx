@@ -143,10 +143,10 @@ export default function ProjectModal({ project, onClose }) {
                 <span>View Live Demo</span>
               </a>
             )}
-
-            {project.githubUrl && (
+            {console.log(project)}
+            {project.github_url && (
               <a
-                href={project.githubUrl}
+                href={project.github_url}
                 target="_blank"
                 rel="noreferrer"
                 className="px-4 py-2 rounded-lg bg-[#252a39] text-[#dee2f6] font-label-md text-label-md hover:bg-[#303444] transition-all flex items-center gap-1.5 border border-[#3d494c]"
