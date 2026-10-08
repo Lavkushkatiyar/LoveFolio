@@ -15,7 +15,7 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#0e1321]/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] border-b border-[#1e293b]">
       <div className="h-20 max-w-[1200px] mx-auto px-gutter flex items-center justify-between gap-4">
-        
+
         {/* Brand */}
         <a href="#top" className="flex items-center gap-3 group" aria-label="Go to top">
           <div className="w-9 h-9 rounded-lg border border-[#e5e7eb] bg-white flex items-center justify-center">
@@ -23,7 +23,7 @@ export default function Navbar() {
           </div>
           <div className="flex flex-col">
             <span className="font-headline-sm text-headline-sm text-[#dee2f6] leading-none">{PROFILE_DATA.name}</span>
-            <span className="font-label-sm text-label-sm text-[#bcc9cd] uppercase tracking-wider mt-0.5">{PROFILE_DATA.title}</span>
+            <span className="hidden sm:block font-label-sm text-label-sm text-[#bcc9cd] uppercase tracking-wider mt-0.5">{PROFILE_DATA.title}</span>
           </div>
         </a>
 
@@ -43,10 +43,11 @@ export default function Navbar() {
         {/* Action Buttons */}
         <div className="flex items-center gap-3">
           <a
-            href="#contact"
+            href="/Lavkush-Katiyar-CV.pdf"
+            download
             className="shrink-0 whitespace-nowrap px-4 py-2 rounded-lg bg-[#2563eb] text-white hover:bg-[#1d4ed8] font-body-sm text-body-sm transition-colors flex items-center gap-1.5"
           >
-            <span>Let's Talk</span>
+            <span>Download CV</span>
             <span className="material-symbols-outlined text-[16px]">arrow_outward</span>
           </a>
 
