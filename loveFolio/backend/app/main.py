@@ -6,14 +6,13 @@ from app.api.experience import router as experience_router
 from app.api.profile import router as profile_router
 from app.api.project import router as project_router
 from app.api.skill import router as skill_router
+from app.core.config import settings
 
 app = FastAPI(name="backend")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-    ],
+    allow_origins=settings.CORS_ORIGINS.split(","),
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
