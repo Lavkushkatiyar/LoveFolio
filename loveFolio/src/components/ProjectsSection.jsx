@@ -72,10 +72,10 @@ export default function ProjectsSection({ onSelectProject }) {
 
                   {/* Action Buttons */}
                   <div className="flex items-center gap-4 pt-3 flex-wrap">
-                    {project.demoUrl && (
+                    {project.demo_url && (
                       <a
                         className="px-4 py-2 rounded-lg bg-[#06b6d4] text-[#003640] font-label-md text-label-md font-semibold hover:opacity-90 transition-all flex items-center gap-1.5 shadow-md shadow-[#06b6d4]/10"
-                        href={project.github_url}
+                        href={project.demo_url}
                         
                         target="_blank"
                         rel="noreferrer"
