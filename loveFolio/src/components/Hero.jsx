@@ -1,4 +1,3 @@
-import React from 'react';
 import { PROFILE_DATA } from '../data/portfolioData';
 
 export default function Hero() {
@@ -45,15 +44,37 @@ export default function Hero() {
 
         </div>
 
-        {/* Monogram avatar */}
-        <div className="hidden sm:flex lg:col-span-5 justify-center lg:justify-end items-center" aria-hidden="true">
-          <div className="flex h-24 w-24 sm:h-36 sm:w-36 items-center justify-center rounded-full border border-[#d1d5db] bg-white p-2">
-            <div className="flex h-full w-full items-center justify-center rounded-full border border-[#e5e7eb] bg-[#f9fafb]">
-              <span className="font-display text-4xl sm:text-6xl font-medium tracking-tight text-[#2563eb]">
-                {PROFILE_DATA.name.charAt(0)}
+        {/* Compact profile metrics */}
+        <div className="lg:col-span-5 grid grid-cols-2 gap-3 sm:gap-4">
+          <a
+            href="#skills"
+            className="group flex min-h-36 flex-col justify-between rounded-xl border border-[#e5e7eb] bg-[#f9fafb] p-4 transition-colors hover:border-[#2563eb] hover:bg-white sm:p-5"
+            aria-label={`${PROFILE_DATA.verified_skills_count} verified skills. View skills`}
+          >
+            <span className="material-symbols-outlined text-2xl text-[#2563eb]">verified</span>
+            <span>
+              <span className="block font-display text-3xl text-[#111827] sm:text-4xl">
+                {PROFILE_DATA.verified_skills_count}
               </span>
-            </div>
-          </div>
+              <span className="font-label-sm text-[#525a65]">Verified skills</span>
+            </span>
+          </a>
+
+          <a
+            href="https://leetcode.com/u/lkatiyar12/"
+            target="_blank"
+            rel="noreferrer"
+            className="group flex min-h-36 flex-col justify-between rounded-xl border border-[#e5e7eb] bg-[#f9fafb] p-4 transition-colors hover:border-[#2563eb] hover:bg-white sm:p-5"
+            aria-label={`${PROFILE_DATA.dsa_solved_count} DSA problems solved. Open LeetCode`}
+          >
+            <span className="material-symbols-outlined text-2xl text-[#2563eb]">code</span>
+            <span>
+              <span className="block font-display text-3xl text-[#111827] sm:text-4xl">
+                {PROFILE_DATA.dsa_solved_count}
+              </span>
+              <span className="font-label-sm text-[#525a65]">DSA problems solved</span>
+            </span>
+          </a>
         </div>
 
       </div>
