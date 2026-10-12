@@ -46,35 +46,43 @@ export default function Hero() {
 
         {/* Compact profile metrics */}
         <div className="lg:col-span-5 grid grid-cols-2 gap-3 sm:gap-4">
-          <a
-            href="#skills"
-            className="group flex min-h-36 flex-col justify-between rounded-xl border border-[#e5e7eb] bg-[#f9fafb] p-4 transition-colors hover:border-[#2563eb] hover:bg-white sm:p-5"
-            aria-label={`${PROFILE_DATA.verified_skills_count} verified skills. View skills`}
-          >
+          <div className="flex min-h-44 flex-col items-start rounded-xl border border-[#e5e7eb] bg-[#f9fafb] p-4 sm:p-5">
             <span className="material-symbols-outlined text-2xl text-[#2563eb]">verified</span>
-            <span>
+            <span className="mt-auto">
               <span className="block font-display text-3xl text-[#111827] sm:text-4xl">
                 {PROFILE_DATA.verified_skills_count}
               </span>
-              <span className="font-label-sm text-[#525a65]">Verified skills</span>
+              <span className="font-label-sm text-[#525a65]">Skills</span>
             </span>
-          </a>
+            <a
+              href="#skills"
+              className="mt-3 inline-flex items-center gap-1 font-label-sm text-[#2563eb] transition-colors hover:text-[#1d4ed8]"
+              aria-label="Browse technical skills"
+            >
+              <span>Browse skills</span>
+              <span aria-hidden="true" className="material-symbols-outlined text-[16px]">arrow_forward</span>
+            </a>
+          </div>
 
-          <a
-            href="https://leetcode.com/u/lkatiyar12/"
-            target="_blank"
-            rel="noreferrer"
-            className="group flex min-h-36 flex-col justify-between rounded-xl border border-[#e5e7eb] bg-[#f9fafb] p-4 transition-colors hover:border-[#2563eb] hover:bg-white sm:p-5"
-            aria-label={`${PROFILE_DATA.dsa_solved_count} DSA problems solved. Open LeetCode`}
-          >
+          <div className="flex min-h-44 flex-col items-start rounded-xl border border-[#e5e7eb] bg-[#f9fafb] p-4 sm:p-5">
             <span className="material-symbols-outlined text-2xl text-[#2563eb]">code</span>
-            <span>
+            <span className="mt-auto">
               <span className="block font-display text-3xl text-[#111827] sm:text-4xl">
                 {PROFILE_DATA.dsa_solved_count}
               </span>
               <span className="font-label-sm text-[#525a65]">DSA problems solved</span>
             </span>
-          </a>
+            <a
+              href="https://leetcode.com/u/lkatiyar12/"
+              target="_blank"
+              rel="noreferrer"
+              className="mt-3 inline-flex items-center gap-1 font-label-sm text-[#2563eb] transition-colors hover:text-[#1d4ed8]"
+              aria-label="View LeetCode profile"
+            >
+              <span>LeetCode profile</span>
+              <span aria-hidden="true" className="material-symbols-outlined text-[16px]">open_in_new</span>
+            </a>
+          </div>
         </div>
 
       </div>

@@ -111,15 +111,14 @@ EXPERIENCE_DATA = [
         "period": "July 2025 - March 2026",
         "location": "India",
         "description": (
-            "Early-career software engineering experience focused on "
-            "backend fundamentals, Deno, HTTP, Unix tooling, and structured problem solving."
+            "Early-career engineering work across command-line tools, HTTP, "
+            "and the fundamentals of building maintainable software."
         ),
         "bullets": [
-            "Built CLI utilities with Deno and JavaScript, focusing on modular code and clean abstractions.",
-            "Worked with HTTP client-server interactions using curl and fetch to understand requests, responses, and API behavior.",
-            "Used Unix command-line tools and shell scripting for file processing and workflow automation.",
-            "Applied structured problem-solving techniques such as decomposition and 5W1H to break down ambiguous requirements.",
-            "Strengthened software engineering fundamentals through readable code, focused functions, and modular design.",
+            "Built small command-line utilities with Deno and JavaScript, keeping code modular and functions focused.",
+            "Used curl and fetch to inspect HTTP requests and responses and understand client-server behavior.",
+            "Used Unix commands and shell scripts to process files and automate routine tasks.",
+            "Broke down ambiguous requirements into smaller steps before implementing a solution.",
         ],
     },
     {
@@ -128,13 +127,12 @@ EXPERIENCE_DATA = [
         "period": "July 2024 - September 2024",
         "location": "Lucknow, India",
         "description": (
-            "Software development training focused on Python, Django, "
-            "web development, backend logic, and database integration."
+            "Practical Python and Django training with a focus on backend logic "
+            "and database-backed application workflows."
         ),
         "bullets": [
-            "Gained hands-on experience with Python, Django, and web development fundamentals through guided training and projects.",
+            "Practiced Python and Django through guided web-development exercises and projects.",
             "Worked on backend logic, database integration, and basic application workflows under mentorship.",
-            "Strengthened problem-solving skills and understanding of software development best practices.",
         ],
     },
 ]

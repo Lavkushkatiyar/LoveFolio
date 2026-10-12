@@ -1,15 +1,30 @@
-import React from 'react';
 import { EDUCATION_DATA } from '../data/portfolioData';
 
 export default function EducationSection() {
-  const courseworkItems = [
-    'Data Structures & Algorithms',
-    'Object-Oriented Programming (OOPs)',
-    'Database Management Systems (DBMS)',
-    'Operating Systems',
-    'Computer Networks',
-    'Software Engineering'
-  ];
+  const courseworkByDegree = {
+    'Bachelor of Computer Applications (BCA)': [
+      'Advanced Data Structures & Algorithms',
+      'Object-Oriented Programming',
+      'Database Management Systems',
+      'Operating Systems',
+      'Computer Networks',
+      'Software Engineering',
+      'Web Application Development',
+      'Cloud Computing Fundamentals',
+    ],
+    'Diploma in Information Technology': [
+      'Programming Fundamentals',
+      'Database Management',
+      'Web Development',
+      'Computer Networks',
+      'Operating Systems',
+      'Software Engineering',
+    ],
+  };
+  const educationData = [...EDUCATION_DATA].sort(
+    (first, second) =>
+      Number(second.degree.includes('(BCA)')) - Number(first.degree.includes('(BCA)')),
+  );
 
   return (
     <section className="scroll-mt-24 w-full py-16 sm:py-20 max-w-[1200px] mx-auto px-gutter" id="education">
@@ -25,7 +40,7 @@ export default function EducationSection() {
 
       {/* Education Card */}
       <div className="space-y-6">
-        {EDUCATION_DATA.map((edu) => (
+        {educationData.map((edu) => (
           <div key={edu.id} className="bg-[#161b2a] rounded-2xl p-6 sm:p-8 shadow-md border border-[#252a39] space-y-4">
             
             {/* Header Info */}
@@ -61,7 +76,7 @@ export default function EducationSection() {
                 Key Relevant Coursework
               </span>
               <div className="flex flex-wrap gap-2">
-                {courseworkItems.map((item) => (
+                {(courseworkByDegree[edu.degree] || []).map((item) => (
                   <span
                     key={item}
                     className="px-3 py-1.5 rounded-lg bg-[#1a1f2e] text-[#dee2f6] font-label-sm text-label-sm border border-[#252a39]"
