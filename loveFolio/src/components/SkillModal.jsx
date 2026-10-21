@@ -31,7 +31,7 @@ export default function SkillModal({ skill, onClose }) {
   const detail = skillDetailsMap[skill.iconKey] || { subtitle: skill.category };
 
   const projectsUsed = PROJECTS_DATA.filter((p) =>
-    p.tech_stac.some(
+    p.tech_stack.some(
       (t) =>
         t.toLowerCase().includes(skill.name.toLowerCase()) ||
         skill.name.toLowerCase().includes(t.toLowerCase())
@@ -52,7 +52,7 @@ export default function SkillModal({ skill, onClose }) {
         >
           <span className="material-symbols-outlined text-[18px]">close</span>
         </button>
-
+    
         {/* Modal Header */}
         <div className="flex items-center gap-4 mb-6 pt-2">
           <div className="w-14 h-14 rounded-xl bg-[#252a39] flex items-center justify-center shrink-0 border border-[#3d494c]">
