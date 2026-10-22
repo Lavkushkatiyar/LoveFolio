@@ -1,18 +1,28 @@
+
 import uuid
 
+from typing import TypeAlias
 from pydantic import BaseModel, ConfigDict
+
+
+class TextSegments(BaseModel):
+    text: str
+    bold: bool = False
+
+
+Bullet: TypeAlias = str | list[TextSegments]
 
 
 class ProjectSchema(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
-    id: uuid.UUID| None = None
+    id: uuid.UUID | None = None
     title: str
     category: str
     date: str
     summary: str
     bullet_intro: str
-    bullets: list[str]
+    bullets: list[Bullet]
     demo_url: str | None
     github_url: str | None
     image_url: str | None

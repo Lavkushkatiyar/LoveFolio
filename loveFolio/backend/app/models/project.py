@@ -1,9 +1,10 @@
 from uuid import uuid4
 import uuid
-
+from typing import Any
 from sqlalchemy import JSON
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy.types import  String, Text
+from app.schemas.project import TextSegments
 
 from app.db.base import Base
 
@@ -19,7 +20,10 @@ class Project(Base):
     date: Mapped[str] = mapped_column(String(50), nullable=False)
     summary: Mapped[str] = mapped_column(Text, nullable=False)
     bullet_intro: Mapped[str] = mapped_column(Text, nullable=False)
-    bullets: Mapped[list[str]] = mapped_column(JSON, nullable=False)
+    bullets: Mapped[list[list[dict[str, Any]]]] = mapped_column(
+    JSON,
+    nullable=False
+)
     demo_url: Mapped[str | None] = mapped_column(String(200), nullable=True)
     github_url: Mapped[str | None] = mapped_column(String(200), nullable=True)
     image_url: Mapped[str | None] = mapped_column(String(200), nullable=True)
