@@ -7,6 +7,31 @@ export default function ProjectsSection({ onSelectProject }) {
     return str.replace(/^["']|["']$/g, '').trim();
   };
 
+const renderRichText = (content) => {
+  // Preserve support for existing plain-text bullets.
+  if (typeof content === 'string') {
+    return sanitizeText(content);
+  }
+
+  // Render structured text segments.
+  if (Array.isArray(content)) {
+    return content.map((segment, index) => {
+      const text = sanitizeText(segment.text);
+
+      return segment.bold ? (
+        <strong key={index} className="font-bold text-[#dee2f6] mx-1">
+            {text}  
+        </strong>
+      ) : (
+        <React.Fragment key={index}>{text}</React.Fragment>
+      );
+    });
+  }
+
+  return '';
+};
+
+
   return (
     <section className="scroll-mt-24 w-full bg-[#090e1c] py-16 sm:py-20" id="projects">
       <div className="max-w-[1200px] mx-auto px-gutter space-y-8">
@@ -52,7 +77,7 @@ export default function ProjectsSection({ onSelectProject }) {
                           <span className="material-symbols-outlined text-[#4cd7f6] text-[18px] shrink-0 mt-0.5">
                             chevron_right
                           </span>
-                          <span>{sanitizeText(bullet)}</span>
+                          <span> {renderRichText(bullet)} </span>
                         </li>
                       ))}
                     </ul>

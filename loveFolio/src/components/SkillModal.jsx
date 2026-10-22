@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { PROJECTS_DATA } from '../data/portfolioData';
 import { RenderTechIcon } from './TechLogos';
-
+import { SKILLS_DETAILS_MAP } from '../data/portfolioData';
 export default function SkillModal({ skill, onClose }) {
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -13,22 +13,9 @@ export default function SkillModal({ skill, onClose }) {
 
   if (!skill) return null;
 
-  const skillDetailsMap = {
-    linux: { subtitle: 'Core OS' },
-    http: { subtitle: 'Protocols' },
-    css: { subtitle: 'Flexbox & Grid' },
-    bootstrap: { subtitle: 'UI Framework' },
-    html: { subtitle: 'Semantic Web' },
-    rest: { subtitle: 'Architecture' },
-    git: { subtitle: 'Version Control' },
-    js: { subtitle: 'ES6+ Async' },
-    react: { subtitle: 'Hooks & State' },
-    node: { subtitle: 'Runtime' },
-    express: { subtitle: 'Middleware' },
-    mongo: { subtitle: 'NoSQL DB' },
-  };
 
-  const detail = skillDetailsMap[skill.iconKey] || { subtitle: skill.category };
+
+  const detail = SKILLS_DETAILS_MAP[skill.iconKey] || { subtitle: skill.category };
 
   const projectsUsed = PROJECTS_DATA.filter((p) =>
     p.tech_stack.some(
