@@ -33,8 +33,8 @@ export default function App() {
         <div className="flex w-full flex-col text-[#111827]">
           <Hero />
           <ExperienceSection />
-          <SkillsSection onSelectSkill={setActiveSkill} />
           <ProjectsSection onSelectProject={setActiveProject} />
+          <SkillsSection onSelectSkill={setActiveSkill} />
           <EducationSection />
           <ContactSection />
         </div>
