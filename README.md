@@ -1,5 +1,5 @@
 # ⚡ LoveFolio
-🌐 **Live:** https://love-folio.vercel.app/j
+🌐 **Live:** https://love-folio.vercel.app/
 
 A modern full-stack portfolio application built with **React, FastAPI, and PostgreSQL**.
 

@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { PROJECTS_DATA } from '../data/portfolioData';
 
 export default function ProjectsSection({ onSelectProject }) {
+  const [showAllProjects, setShowAllProjects] = useState(false);
   const sanitizeText = (str) => {
     if (!str) return '';
     return str.replace(/^["']|["']$/g, '').trim();
@@ -47,7 +48,7 @@ const renderRichText = (content) => {
 
         {/* Project Cards List */}
         <div className="space-y-8">
-          {PROJECTS_DATA.map((project, index) => {
+          {PROJECTS_DATA.slice(0, showAllProjects ? undefined : 3).map((project, index) => {
             const isReverse = index % 2 === 1;
             return (
               <div
@@ -125,7 +126,6 @@ const renderRichText = (content) => {
                   onClick={() => onSelectProject && onSelectProject(project)}
                   className="w-full lg:w-96 shrink-0 group cursor-pointer"
                 >
-                     {console.log(project.featured_image_url)}
                   <img
                     className="block w-full h-auto rounded-lg object-contain transition-opacity duration-200 group-hover:opacity-90"
                     src={project.featured_image_url}
@@ -140,6 +140,19 @@ const renderRichText = (content) => {
             );
           })}
         </div>
+
+        {PROJECTS_DATA.length > 3 && (
+          <div className="flex justify-center pt-2">
+            <button
+              type="button"
+              onClick={() => setShowAllProjects((isShowingAll) => !isShowingAll)}
+              aria-expanded={showAllProjects}
+              className="px-5 py-2.5 rounded-lg bg-[#252a39] text-[#dee2f6] font-label-md text-label-md hover:bg-[#303444] transition-all border border-[#3d494c] cursor-pointer"
+            >
+              {showAllProjects ? 'Show less' : 'Show more projects'}
+            </button>
+          </div>
+        )}
 
       </div>
     </section>
