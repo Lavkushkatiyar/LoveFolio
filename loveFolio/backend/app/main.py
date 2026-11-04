@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI,Response
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.education import router as education_router
@@ -33,3 +33,7 @@ def read_root():
 @app.get("/health")
 def healthcheck():
     return {"status": "ok"}
+
+@app.head("/health")
+def check_health():
+    return Response(status_code=200)
